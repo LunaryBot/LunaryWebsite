@@ -1,0 +1,23 @@
+{
+  "name": "lunary-website",
+  "version": "3.0.0",
+  "description": "",
+  "main": "src/routers/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LunaryBot/LunaryWebsite.git"
+  },
+  "author": "Bae#1097",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LunaryBot/LunaryWebsite/issues"
+  },
+  "homepage": "https://github.com/LunaryBot/LunaryWebsite#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1"
+  }
+}
