@@ -18,6 +18,10 @@
   "homepage": "https://github.com/LunaryBot/LunaryWebsite#readme",
   "dependencies": {
     "dotenv": "^10.0.0",
-    "express": "^4.17.1"
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "passport": "^0.4.1",
+    "passport-discord": "^0.1.4"
   }
 }

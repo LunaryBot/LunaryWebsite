@@ -1,0 +1,384 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Potta+One&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+
+body {
+    background-image: url("https://media.discordapp.net/attachments/826844594464489494/846061085643636736/Design_sem_nome_11.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-blend-mode: overlay;
+}
+
+.main-content {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 2rem;
+    justify-content: center;
+    padding-bottom: 6rem;
+}
+
+.main-content-image figure {
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    border-radius: 100%;
+    margin-right: 0px;
+    transform: translatey(0px);
+    padding: 4px;
+    border: solid 2.5px #A020F0;
+    animation: pulse 3s linear infinite, float 6s ease-in-out infinite;
+}
+
+.main-content-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(160, 32, 240, 0.87);
+    }
+
+    40% {
+        box-shadow: 0 0 0 40px rgba(252, 34, 147, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(252, 34, 147, 0);
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translatey(0px);
+    }
+    50% {
+        transform: translatey(-20px);
+    }
+    100% {
+        transform: translatey(0px);
+    }
+}
+
+.main-content-children {
+    padding: 1rem;
+    width: 50%;
+    margin: auto;
+    min-width: 400px;
+    text-align: left;
+    font-family: "Poppins";
+    vertical-align: center;
+}
+
+.main-content-children h1 {
+    text-align: left;
+    font-family: "Chewy", cursive;
+    font-size: 74px;
+    font-weight: 900;
+    margin: 0;
+}
+
+.main-content-children p {
+    font-family: "Fredoka One", sans-serif;
+    text-align: left;
+    margin-top: 0px;
+}
+
+.bot-icon-base {
+    position: relative;
+    display: flex;
+    margin: auto 5px;
+}
+
+.bot-icon {
+    display: flex;
+    padding: 3px 1px;
+    background-color: #7289da;
+    font-size: 10px;
+    border-radius: 5px;
+    height: 20px;
+    margin: 30px 5px;
+}
+
+.bot-icon svg{
+    margin: auto;
+    display: block;
+}
+
+.main-content-buttons {
+    display: flex;
+    padding: 1rem 0rem;
+}
+
+.main-content-buttons li a {
+    display: block;
+    margin: 10px;
+    margin-right: 20px;
+    margin-left: 0px;
+    padding: 10px;
+    min-width: 100px;
+    text-align: center;
+    background-color: #0D0309;
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+    font-weight: 600;
+    font-size: 14px;
+    color: #eef1f5;
+}
+
+.main-content-buttons li a:hover {
+    color: white;
+    background-color: #A020F0;
+}
+
+.main-features {
+    margin: 0;
+    display: block;
+}
+
+.wave-border {
+    width: 100%;
+    height: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.wave-border > svg {
+    width: 100%;
+    height: 100%;
+}
+.wave-border > svg > path {
+    width: 100%;
+    height: 100%;
+    fill: #0E0F12 !important;
+    animation: wave 20s linear infinite alternate;
+}
+@keyframes wave {
+    0% {
+        d: path(
+            "M826.337463,25.5396311 C670.970254,58.655965 603.696181,68.7870267 447.802481,35.1443383 C293.342778,1.81111414 137.33377,1.81111414 0,1.81111414 L0,150 L1920,150 L1920,1.81111414 C1739.53523,-16.6853983 1679.86404,73.1607868 1389.7826,37.4859505 C1099.70117,1.81111414 981.704672,-7.57670281 826.337463,25.5396311 Z"
+        );
+    }
+
+    50% {
+        d: path(
+            "M655.558582,28.4898877 C500.191373,61.6062216 422.833785,83.5422763 266.940085,49.8995879 C112.480383,16.5663637 84.0992497,8.02840272 0,44.7243294 L0,150.727527 L1920,150.727527 L1920,49.8995879 C1580.91676,-34.8808285 1438.10804,73.6768193 1148.0266,38.0019829 C857.945166,2.32714659 810.925791,-4.62644617 655.558582,28.4898877 Z"
+        );
+    }
+
+    to {
+        d: path(
+            "M842.322034,38.0019829 C686.954825,71.1183168 623.386282,53.08497 467.492582,19.4422816 C313.032879,-13.8909426 84.0992497,8.02840272 0,44.7243294 L0,150.727527 L1920,150.727527 L1920,76.8685643 C1512.23604,-35.3595639 1568.70222,67.4289432 1278.62078,31.7541069 C988.539347,-3.92072949 997.689243,4.88564905 842.322034,38.0019829 Z"
+        );
+    }
+}
+
+.feature-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #0E0F12;
+    padding-bottom: 25vh;
+}
+
+.last-row {
+    padding: 0;
+    /*padding-bottom: 150px;*/
+}
+
+.feature-column {
+    flex-grow: 1;
+    padding: 1rem;
+    width: 80%;
+    margin: 10px;
+    max-width: 400px;
+    vertical-align: center;
+}
+
+.feature-column h1 {
+    font-family: "Fredoka One";
+    font-weight: 700;
+    position: relative;
+}
+
+.feature-column h1::after {
+    height: 6px;
+    width: 40px;
+    background-color: #A020F0;
+    content: "";
+    position: absolute;
+    bottom: -12px;
+    left: 0;
+}
+
+.feature-column p {
+    text-align: justify;
+    font-family: sans-serif;
+}
+
+.feature-column-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: auto;
+    max-width: 400px;
+    background: #A020F0;
+    border-radius: 16px;
+    padding: 2px 2px;
+}
+
+.feature-column-image img {
+    background: #36393F;
+    border-radius: 14px;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.featured-video {
+    padding-top: 50px;
+    margin: auto;
+}
+
+.featured-video h1 {
+    text-align: center;
+    margin: 0;
+    padding-bottom: 40px;
+}
+
+.featured-video > .video {
+    max-width: 800px;
+    width: 100%;
+    min-width: 300px;
+    height: auto;
+    display: flex;
+    margin: 0 auto;
+    padding: 2px 2px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(to top right, #A020F0, #A020F0);
+    border-radius: 14px;
+}
+
+.featured-video > .video > video {
+    height: 100%;
+    width: 100%;
+    border-radius: 12px;
+}
+
+*:focus {
+    outline: none;
+}
+
+.gallery-btn {
+    display: inline-block;
+    padding: 14px 28px;
+    text-align: center;
+    margin: auto;
+    margin-top: 2rem;
+    border-radius: 4px;
+    background-color: #272928;
+    font-size: 15px;
+    font-weight: 600;
+    transition: color 0.2s ease-in-out, background 0.2s ease-in-out;
+    color: #eef1f5;
+    transition: 0.2s ease;
+    cursor: pointer;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.gallery-btn:hover {
+    color: white;
+    background-color: #A020F0;
+}
+
+.main-links {
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    justify-content: center;
+    padding-top: 6rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.link-container {
+    margin: 20px;
+    padding: 20px;
+    max-width: 500px;
+    border-radius: 10px;
+    background-color: #0E0309;
+    white-space: normal;
+    transition: transform 0.5s ease;
+}
+
+.link-empty-child {
+    width: 500px;
+    margin: 0px 20px;
+    padding: 0px 20px;
+    height: 0px;
+}
+
+.link-container:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.link-container h1 {
+    font-family: "Poppins";
+    margin-top: 0;
+    font-size: 20px;
+}
+
+.link-container p {
+    color: darkgrey;
+    font-size: 13px;
+}
+
+.link-button {
+    color: white;
+    margin: auto;
+    padding: 8px;
+    background-color: #A020F0;
+    border-radius: 10px;
+    font-family: "Poppins";
+    text-align: center;
+    font-size: 12px;
+}
+
+.link-container a:hover {
+    color: white;
+}
+
+.link-button:hover {
+    background-color: rgb(130, 26, 194);
+}
+
+@media (max-width: 810px) {
+    .main-content-image {
+        height: auto;
+        margin: auto;
+    }
+    .main-content-children h1 {
+        text-align: center;
+    }
+    .main-content-children p {
+        text-align: center;
+    }
+    .main-content-buttons li a {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}

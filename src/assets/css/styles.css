@@ -1,0 +1,191 @@
+html{
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size: 100%;
+    min-width: 400px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    text-rendering: optimizeLegibility;
+}
+
+.fade-in {
+    animation: fadeIn ease 2s;
+    -webkit-animation: fadeIn ease 2s;
+    -moz-animation: fadeIn ease 2s;
+    -o-animation: fadeIn ease 2s;
+    -ms-animation: fadeIn ease 2s
+}
+
+.fade-in-scroll {
+    opacity: 0
+}
+
+
+a {
+    text-decoration: none;
+    color: #fafafa;
+}
+
+* {
+    box-sizing: border-box;
+    list-style: none;
+}
+
+body {
+    background-color: #342e4e;
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-family: 'Poppins';
+}
+
+body::-webkit-scrollbar {
+    width: 0.5em;
+}
+  
+body::-webkit-scrollbar-track {
+    background: #16131B;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #A020F0;
+    /*outline: 1px solid slategrey;*/
+    border-radius: 0.5em;
+}
+
+/* Footer */
+
+.footer {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 70px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    justify-content: space-between;
+    background: #272928;
+    font-family: cursive;
+}
+
+.footer-information {
+    padding: 20px;
+    margin: auto;
+}
+  
+.footer-information p{
+    font-family: 'Poppins';
+    color: darkgrey;
+    font-size: 12px;
+}
+
+.footer-links {
+    padding: 20px;
+    margin: auto;
+    font-family: 'Poppins'
+}
+
+.footer-links ul{
+    padding: 0;
+}
+
+.footer-links ul li a{
+    text-decoration: none;
+    color: white;
+}
+
+.footer-links ul li a:hover{
+    cursor: pointer;
+    color: #A020F0;
+}
+
+.invite-link {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 10px;
+    align-items: center;
+    background: #A020F0;
+    overflow: hidden;
+    box-shadow: 20px black;
+    transition: transform .5s ease;
+}
+  
+.invite-link img{
+    max-width: 100px;
+    height: auto;
+}
+
+.invite-link:hover .overlay{
+    opacity: 0.85;
+}
+
+.invite-text {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    vertical-align: center;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    margin: 0;
+    padding: 10px;
+    font-family: 'Poppins';
+    font-size: 25px;
+    color: white;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+@-moz-keyframes fadeIn {
+    0% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+@-o-keyframes fadeIn {
+    0% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+@-ms-keyframes fadeIn {
+    0% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+@media (max-width: 1024px){
+    .invite-link {
+        transform: scale(0);
+    }
+}
