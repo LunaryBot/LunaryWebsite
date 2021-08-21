@@ -18,7 +18,6 @@ app.use(session({
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, '../pages'));
 app.use(express.static(path.join(__dirname, '../assets')))
-console.log(path.join(__dirname, '../assets'))
 
 // Passport
 app.use(passport.initialize());
@@ -26,6 +25,7 @@ app.use(passport.session());
 
 // Routers
 app.use("/auth", require("./auth"))
+app.use("/dashboard", require("./dashboard"))
 
 app.get("/", (req, res) => {
     res.render("main", {
@@ -33,6 +33,12 @@ app.get("/", (req, res) => {
     })
 })
 
-app.get("/login", passport.authenticate('discord'))
+app.get("/login", (req, res) => {
+    const params = new URLSearchParams({
+        url: req.query.url
+    }).toString()
+
+    res.redirect(`/auth/login${params != "url=undefined" ? `?${params}` : ""}`)
+})
 
 app.listen(3000)

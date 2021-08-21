@@ -67,12 +67,17 @@ body::-webkit-scrollbar-thumb {
     font-family: cursive;
 }
 
+.footer img {
+    width: 70px;
+    height: 70px;
+}
+
 .footer-information {
     padding: 20px;
     margin: auto;
 }
   
-.footer-information p{
+.footer-information p {
     font-family: 'Poppins';
     color: darkgrey;
     font-size: 12px;
@@ -98,6 +103,17 @@ body::-webkit-scrollbar-thumb {
     color: #A020F0;
 }
 
+.overlay {
+    position: absolute;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: 0.5s ease;
+    background-color: rgba(0, 0, 0, 0.7);
+    text-align: center;
+}
+
 .invite-link {
     position: fixed;
     bottom: 20px;
@@ -112,29 +128,28 @@ body::-webkit-scrollbar-thumb {
     background: #A020F0;
     overflow: hidden;
     box-shadow: 20px black;
-    transition: transform .5s ease;
+    transition: transform 0.5s ease;
 }
   
-.invite-link img{
+.invite-link img {
     max-width: 100px;
     height: auto;
 }
-
-.invite-link:hover .overlay{
+  
+.invite-link:hover .overlay {
     opacity: 0.85;
 }
-
+  
 .invite-text {
-    display: flex;
+    display: block;
     position: absolute;
     top: 50%;
     left: 50%;
-    vertical-align: center;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     margin: 0;
     padding: 10px;
-    font-family: 'Poppins';
+    font-family: "Poppins";
     font-size: 25px;
     color: white;
 }
