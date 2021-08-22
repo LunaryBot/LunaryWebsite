@@ -34,11 +34,7 @@ app.get("/", (req, res) => {
 })
 
 app.get("/login", (req, res) => {
-    const params = new URLSearchParams({
-        url: req.query.url
-    }).toString()
-
-    res.redirect(`/auth/login${params != "url=undefined" ? `?${params}` : ""}`)
+    res.redirect(`/auth/login`)
 })
 
 app.listen(3000)
