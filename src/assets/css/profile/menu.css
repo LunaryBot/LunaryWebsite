@@ -8,7 +8,7 @@
 body{
 	margin: 0;
 	padding: 0;
-	font-family: "Roboto", sans-serif;
+	font-family: "Poppins", sans-serif;
 }
 
 header {
@@ -56,7 +56,9 @@ header {
 	background: #0B87A6;
 }
 
-.sidebar{
+/* Sidebar */
+
+.sidebar {
 	z-index: 1;
 	top: 0;
 	background: #212121;
@@ -105,7 +107,7 @@ header {
 	margin-bottom: 20px;
 }
 
-.sidebar a{
+.sidebar .itens a{
 	color: #fff;
 	display: block;
 	width: 100%;
@@ -117,11 +119,16 @@ header {
 	transition-property: background;
 }
 
-.sidebar a:hover{
+.sidebar .itens a:hover{
 	background: #19B3D3;
 }
 
-.sidebar i{
+.itens p {
+	color: grey;
+	margin-left: 7px;
+}
+
+.sidebar .itens i{
 	padding-right: 10px;
 }
 
@@ -175,7 +182,7 @@ header {
 	opacity: 0.8;
 }
 
-/* A */
+/* Mobile */
 .mobile__menu {
 	background: #212121;
 	margin-top: 70px;
@@ -250,7 +257,11 @@ header {
 	padding-right: 10px;
 }
 
-/* Responsive CSS */
+@media screen and (min-width: 780px) {
+	.mobile__menu {
+		display: none;
+	}
+}
 
 @media screen and (max-width: 780px){
 	.sidebar{
@@ -329,11 +340,5 @@ header {
 
 	.active{
 		display: block;
-	}
-}
-
-@media screen and (min-width: 780px) {
-	.mobile__menu {
-		display: none;
 	}
 }
