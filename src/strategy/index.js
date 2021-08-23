@@ -18,7 +18,7 @@ const discordOuath = new Strategy({
         scope: ["guilds", "identify"]
     },
     function(accessToken, refreshToken, profile, cb) {
-        const avatar = profile.avatar ? `https://cdn.discordapp.com/avatars/${profile.id}/${profile.avatar}.${Boolean(profile.avatar.startsWith("a_")) ? ".gif" : ".png"}` : "https://cdn.discordapp.com/embed/avatars/1.png"
+        const avatar = profile.avatar ? `https://cdn.discordapp.com/avatars/${profile.id}/${profile.avatar}.${Boolean(profile.avatar.startsWith("a_")) ? "gif" : "png"}` : "https://cdn.discordapp.com/embed/avatars/1.png"
 
         const user = {
             id: profile.id,

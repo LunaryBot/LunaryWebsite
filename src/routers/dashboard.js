@@ -2,11 +2,13 @@ const router = require("express").Router()
 const checkAuth = require("../utils/checkAuth")
 
 router.get("/", checkAuth, (req, res) => {
-    res.send("Ok!")
+    res.redirect("/dashboard/@me")
 })
 
-router.get("/a", checkAuth, (req, res) => {
-    res.send("...")
+router.get("/@me", checkAuth, (req, res) => {
+    res.render("dashboard/profile/main", {
+        user: req.user
+    })
 })
 
 module.exports = router

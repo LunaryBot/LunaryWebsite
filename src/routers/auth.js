@@ -4,7 +4,7 @@ const redirectCache = new Map()
 
 router.get("/", (req, res) => res.redirect("/auth/login"))
 
-router.get("/login", (req, res) => passport.authenticate('discord'))
+router.get("/login", passport.authenticate('discord'))
 
 router.get("/redirect", passport.authenticate("discord", {
         failureRedirect: "/"
