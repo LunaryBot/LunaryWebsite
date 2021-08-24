@@ -53,20 +53,40 @@
     
     <!-- Sidebar -->
     <div class="sidebar">
-        <div class="profile_info">
-            <img src="<%= user.avatar %>" class="profile_image" alt="avatar-<%= user.tag %> " />
-            <h4><%= user.tag %></h4>
+        <div class="scroll">
+            <div class="guilds">
+                <% user.guilds.filter(function(x) {
+                    const a = new permissions(x.permissions)
+                    
+                    return a.has(8) || a.has(32)
+                }).forEach(guild => { %>
+                    <div class="guild" id="<%= guild.id %>">
+                        <img src="<%= `https://cdn.discordapp.com/${guild.icon ? `icons/${guild.id}/${guild.icon}.png` : 'embed/avatars/1.png'}` %>" />
+                    </div>
+                <% }); %>
+                <div style="height: 10px;"></div>
+            </div>
         </div>
-        <div class="itens">
-            <p>Geral</p>
-            <a href="#"><i class="fas fa-desktop"></i><span>Dashboard</span></a>
-            <a href="#"><i class="fas fa-cogs"></i><span>Components</span></a>
-            <a href="#"><i class="fas fa-table"></i><span>Tables</span></a>
-            <a href="#"><i class="fas fa-th"></i><span>Forms</span></a>
-            <a href="#"><i class="fas fa-info-circle"></i><span>About</span></a>
-            <a href="#"><i class="fas fa-sliders-h"></i><span>Settings</span></a>
-            <a href="#"><i class="fas fa-sliders-h"></i><span>Settings</span></a>
-            <a href="#"><i class="fas fa-sliders-h"></i><span>Settings</span></a>
+        <div class="scroll">
+            <div class="menu">
+                <div class="profile_info">
+                    <img src="<%= user.avatar %>" class="profile_image" alt="avatar-<%= user.tag %> " />
+                    <h4><%= user.tag %></h4>
+                </div>
+                <div class="itens">
+                    <p>Geral</p>
+                    <a href="#"><i class="fas fa-desktop"></i><span>Dashboard</span></a>
+                    <a href="#"><i class="fas fa-cogs"></i><span>Components</span></a>
+                    <a href="#"><i class="fas fa-table"></i><span>Tables</span></a>
+                    <a href="#"><i class="fas fa-th"></i><span>Forms</span></a>
+                    <a href="#"><i class="fas fa-info-circle"></i><span>About</span></a>
+                    <a href="#"><i class="fas fa-sliders-h"></i><span>Settings</span></a>
+                    <a href="#"><i class="fas fa-sliders-h"></i><span>Settings</span></a>
+                    <a href="#"><i class="fas fa-sliders-h"></i><span>Settings</span></a>
+
+                    <div style="height: 30px;"></div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -82,13 +102,33 @@
       </div>
     </div>
 
+    <span id="user-data" hidden>
+        <%= JSON.stringify(user) %>
+    </span>
+
     <script type="text/javascript">
+    const regexAnimateIcon = /https:\/\/cdn.discordapp.com\/icons\/\d{18}\/a_(.{32})\.png/gi
+    const regexAnimateIcon2 = /https:\/\/cdn.discordapp.com\/icons\/\d{18}\/a_(.{32})\.gif/gi
         $(document).ready(function(){
             $('.nav_btn').click(function(){
                 const menu = $('#mobile__menu');
 
                 if(menu.hasClass("mobile__menu--active")) menu.removeClass("mobile__menu--active");
                 else menu.addClass("mobile__menu--active");
+            });
+
+            $('.guild').hover(function() {
+                const img = $(`#${this.id} img`);
+                const src = img.attr('src');
+                if(regexAnimateIcon.test(src)) {
+                    return img.attr('src', src.replace(/png$/g, 'gif'));
+                }
+            }, function() {
+                const img = $(`#${this.id} img`);
+                const src = img.attr('src');
+                if(regexAnimateIcon2.test(src)) {
+                    return img.attr('src', src.replace(/gif$/g, 'png'));
+                };
             });
         });
     </script>

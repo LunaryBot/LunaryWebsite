@@ -1,4 +1,5 @@
 const router = require("express").Router()
+const { Permissions } = require("discord.js")
 const checkAuth = require("../utils/checkAuth")
 
 router.get("/", checkAuth, (req, res) => {
@@ -7,7 +8,8 @@ router.get("/", checkAuth, (req, res) => {
 
 router.get("/@me", checkAuth, (req, res) => {
     res.render("dashboard/profile/main", {
-        user: req.user
+        user: req.user,
+        permissions: Permissions
     })
 })
 
