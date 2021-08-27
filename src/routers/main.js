@@ -25,7 +25,7 @@ app.use(passport.session());
 
 // Routers
 app.use("/auth", require("./auth"))
-app.use("/dashboard", require("./dashboard"))
+app.use("/dashboard", require("./dashboard/main"))
 
 app.get("/", (req, res) => {
     res.render("main", {

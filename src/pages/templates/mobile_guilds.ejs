@@ -1,0 +1,28 @@
+<div class="scroll">
+    <div class="guilds">
+        <div class="mobile__guild" id="<%= user.id %>">
+            <img id="mobile__guild__<%= user.id %>" class="menu_guild_user_avatar" src="<%= user.avatar %>" />
+        </div>
+        <% user.guilds.filter(function(x) {
+            const a = new permissions(x.permissions)
+            return a.has(8) || a.has(32)
+        }).forEach(guild => { %>
+            <div class="mobile__guild" id="<%= guild.id %>">
+                <% if(guild.icon) { %> 
+                    <img id="mobile__guild__<%= guild.id %>" src="<%= `https://cdn.discordapp.com/${guild.icon ? `icons/${guild.id}/${guild.icon}.png` : 'embed/avatars/1.png'}` %>" /> <% 
+                } else {
+                    const a = /[a-z]/i
+                    const b = /\s[a-z]/i
+                    let array = [ ...guild.name ]
+
+                    array = array.filter(function(x, i) {
+                    if(i == 0) return true
+                    if(!x.trim()) return
+                    if(!a.test(x)) return true
+                    if(b.test(`${array[i -1]}${x}`)) return true 
+                    }) %> <div class="guildN"><%= array.join("") %></div> <% } %>
+            </div>
+        <% }); %>
+        <div style="height: 10px;"></div>
+    </div>
+</div>

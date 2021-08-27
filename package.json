@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/LunaryBot/LunaryWebsite#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "discord.js": "^12.5.1",
     "dotenv": "^10.0.0",
     "ejs": "^3.1.6",

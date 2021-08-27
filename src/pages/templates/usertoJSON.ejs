@@ -1,0 +1,8 @@
+<span id="user-data" hidden>
+    <% 
+        const data = { ...user } 
+         delete data.accessToken
+         delete data.refreshToken
+    %> 
+    <%= JSON.stringify(data) %>
+</span>

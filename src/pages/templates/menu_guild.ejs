@@ -1,0 +1,62 @@
+<input type="checkbox" id="check">
+    <!-- Header -->
+    <header>
+        <div class="left__area">
+            <h3><i class="fa fa-bars nav_btn"></i></h3>
+            <img class ="avatar__lunnary" src="https://cdn.discordapp.com/avatars/777654875441463296/60bab4386da65e5332379ddd2461e834.png?size=1024" alt="avatar-lunar" />
+        </div>
+    </header>
+    
+    <!-- Mobile Nav Bar -->
+
+    </div>
+    <div id="mobile__menu" class="mobile__menu">
+        <%- include("mobile_guilds") %> 
+        <div class="scroll">
+            <div class="menu">
+                <div class="profile_info">
+                    <img src="<%= user.avatar %>" class="profile_image" alt="avatar-<%= user.tag %> " />
+                    <h4><%= user.tag %></h4>
+                </div>
+                <div class="itens">
+                    <p>Geral</p>
+                    <a class="a-item" href="#"><i class="fas fa-desktop"></i><span>Dashboard</span></a>
+                    <a class="a-item" href="#"><i class="fas fa-cogs"></i><span>Components</span></a>
+                    <a class="a-item" href="#"><i class="fas fa-table"></i><span>Tables</span></a>
+                    <a class="a-item" href="#"><i class="fas fa-th"></i><span>Forms</span></a>
+                    <a class="a-item" href="#"><i class="fas fa-info-circle"></i><span>About</span></a>
+                    <a class="a-item" href="#"><i class="fas fa-sliders-h"></i><span>Settings</span></a>
+                    <a class="a-item" href="#"><i class="fas fa-sliders-h"></i><span>Settings</span></a>
+                    <a class="a-item" href="#"><i class="fas fa-sliders-h"></i><span>Settings</span></a>
+
+                    <div style="height: 30px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <%- include("guilds") %> 
+        <div class="scroll">
+            <div class="menu">
+                <div class="profile_info">
+                    <img src="<%= user.avatar %>" class="profile_image" alt="avatar-<%= user.tag %> " />
+                    <h4><%= user.tag %></h4>
+                </div>
+                <div class="itens">
+                    <p>Geral</p>
+                    <a class="a-item" href="/dashboard/@me/mygifs"><i class="fas fa-images"></i><span>My Gifs</span></a>
+                    <a class="a-item" href="/dashboard/@me/myconfigs"><i class="fas fa-cogs"></i><span>My Configs</span></a>
+                    <a class="a-item" href="/dashboard/@me/mygifs"><i class="fas fa-address-card"></i><span>Ficha</span></a>
+                    <a class="a-item" href="/dashboard/@me/mygifs"><i class="fas fa-th"></i><span>Forms</span></a>
+                    <a class="a-item" href="/dashboard/@me/mygifs"><i class="fas fa-info-circle"></i><span>About</span></a>
+                    <a class="a-item" href="/dashboard/@me/mygifs"><i class="fas fa-sliders-h"></i><span>Settings</span></a>
+                    <a class="a-item" href="/dashboard/@me/mygifs"><i class="fas fa-sliders-h"></i><span>Settings</span></a>
+                    <a class="a-item" href="/dashboard/@me/mygifs"><i class="fas fa-sliders-h"></i><span>Settings</span></a>
+
+                    <div style="height: 30px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>

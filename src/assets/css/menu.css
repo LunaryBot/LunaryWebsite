@@ -16,26 +16,55 @@ header {
 	position: fixed;
 	background: #181818;
 	padding: 20px;
-	width: calc(100% - 0%);
+	width: calc(100%);
 	top: 0;
 	height: 70px;
 }
 
-.left_area h3{
-	color: #fff;
-	margin: 0;
-	text-transform: uppercase;
-	font-size: 22px;
-	font-weight: 900;
+header .left__area .avatar__lunnary {
+	border-radius: 50%;
+	width: 56px;
+	position: fixed;
+	top: 7px;
+	margin-left: 10px;
+	opacity: 50%;
+    border: 2px solid #00000000;
+    transition: border 0.5s;
 }
 
-.left_area span{
-	color: #19B3D3;
+header .left__area .avatar__lunnary:hover {
+    opacity: 100%;
+    border: 2px solid #A020F0;
+    transition: border 0.5s;
 }
 
-.left_area .nav_btn {
+header .left__area .nav_btn {
 	display: none;
 }
+
+header .center__area {
+	text-align: center;
+}
+
+header .center__area .avatar__lunnary {
+	border-radius: 50%;
+	width: 60px;
+	position: fixed;
+	top: 7px;
+	opacity: 50%;
+    border: 2px solid #00000000;
+    transition: border 0.5s;
+}
+
+header .center__area .avatar__lunnary:hover {
+    opacity: 100%;
+    border: 2px solid #A020F0;
+    transition: border 0.5s;
+}
+
+/* header .mobile__left__area {
+	
+} */
 
 .logout_btn{
 	padding: 5px;
@@ -83,13 +112,14 @@ header {
 	margin-top: 10px;
 	margin-bottom: 10px;
 	overflow-y: scroll;
+	font-family: "Poppins", sans-serif;
 }
 
 .sidebar .guilds {
 	border-top: 1px solid #111111ea;
 	width: 80px;
 	background-color: #181818;
-	height: 100%;
+	height: 91%;
 	top: 0;
 	position: absolute;
 	text-align: center;
@@ -119,16 +149,32 @@ header {
 }
 
 .sidebar .guilds .guild img {
-	width: 60px;
-	border-radius: 50%;
-	filter: grayscale(80%);
 	margin-left: auto;
     margin-right: auto;
 	margin-top: 5px;
+	width: 60px;
+	border-radius: 50%;
+	filter: grayscale(80%);
 	display: inline-block;
 	transition: 0.1s;
 }
 
+.sidebar .guilds .guild .guildN {
+	margin-left: auto;
+    margin-right: auto;
+	margin-top: 5px;
+    line-height: 60px;
+    text-align: center;
+    border-radius: 100%;
+    width: 60px;
+    height: 60px;
+    background-color: rgb(114, 137, 218);
+	filter: grayscale(80%);
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.sidebar .guilds .guild .guildN:hover,
 .sidebar .guilds .guild img:hover {
 	filter: grayscale(0%);
 	transform: scale(1.17, 1.17);
@@ -155,20 +201,25 @@ header {
 	margin-bottom: 20px;
 }
 
+.itens {
+	line-height: 30px;
+}
+
 .sidebar .itens a{
 	color: #fff;
 	display: block;
 	width: 100%;
-	line-height: 60px;
 	text-decoration: none;
-	padding-left: 40px;
+	padding-left: 5px;
 	box-sizing: border-box;
 	transition: 0.5s;
 	transition-property: background;
+	font-size: 16px;
+	font-weight: bold;
 }
 
 .sidebar .itens a:hover{
-	background: #19B3D3;
+	background: #ffffff1f;
 }
 
 .itens p {
@@ -177,7 +228,11 @@ header {
 }
 
 .sidebar .itens i{
-	padding-right: 10px;
+	width: 18px;
+	height: 20px;
+	padding-right: 45px;
+	padding-left: 10px;
+	color: #A020F0;
 }
 
 #check:checked ~ .sidebar{
@@ -195,13 +250,12 @@ header {
 }
 
 .content{
-	width: (100% - 350px);
 	margin-top: 60px;
 	padding: 20px;
 	margin-left: 350px;
 	background-position: center;
 	background-size: cover;
-	height: 100vh;
+	height: auto;
 	transition: 0.5s;
 }
 
@@ -230,6 +284,13 @@ header {
 }
 
 /* Mobile */
+
+.mobile__menu__overlay {
+	background-color: rgba(0, 0, 0, 0.438);
+	display: none;
+	width: 100%;
+}
+
 .mobile__menu {
 	background: #212121;
 	margin-top: 70px;
@@ -243,9 +304,89 @@ header {
     overflow-x: hidden;
     transition: all 0.5s ease 0s;
 }
+
+.mobile__menu .menu {
+	width: calc(100% - 80px);
+	height: 91%;
+	float: right;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 80px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	overflow-y: scroll;
+	font-family: "Poppins", sans-serif;
+}
+
+.mobile__menu .guilds {
+	border-top: 1px solid #111111ea;
+	width: 80px;
+	background-color: #181818;
+	height: 100%;
+	top: 0;
+	position: absolute;
+	text-align: center;
+	vertical-align: baseline;
+	overflow-y: scroll;
+}
+
+.mobile__menu .menu::-webkit-scrollbar,
+.mobile__menu .guilds::-webkit-scrollbar {
+    width: 0em;
+}
+  
+.mobile__menu .menu::-webkit-scrollbar-track,
+.mobile__menu .guilds::-webkit-scrollbar-track {
+    background: #ffffff00;
+    box-shadow: inset 0 0 6px #ffffff00;
+}
+
+.mobile__menu .menu::-webkit-scrollbar-thumb,
+.mobile__menu .guilds::-webkit-scrollbar-thumb {
+    background-color: #ffffff00;
+    border-radius: 0em;
+}
+
+.mobile__menu .guilds .mobile__guild {
+	height: 65px;
+}
+
+.mobile__menu .guilds .mobile__guild img {
+	width: 60px;
+	border-radius: 50%;
+	filter: grayscale(80%);
+	margin-left: auto;
+    margin-right: auto;
+	margin-top: 5px;
+	display: inline-block;
+	transition: 0.1s;
+}
+
+.mobile__menu .guilds .mobile__guild .guildN {
+    line-height: 60px;
+    text-align: center;
+    border-radius: 100%;
+    width: 60px;
+    height: 60px;
+    background-color: rgb(114, 137, 218);
+	filter: grayscale(80%);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	margin-left: auto;
+    margin-right: auto;
+	margin-top: 5px;
+}
+
+.mobile__menu .guilds .mobile__guild .guildN:hover,
+.mobile__menu .guilds .mobile__guild img:hover {
+	filter: grayscale(0%);
+	transform: scale(1.17, 1.17);
+  	transition: 0.1s;
+}
   
 .mobile__menu--active {
-    width: 70%;
+    width: 50%;
 }
 
 .mobile__menu .mobile__menu__close {
@@ -288,12 +429,14 @@ header {
 	color: #fff;
 	display: block;
 	width: 100%;
-	line-height: 60px;
+	line-height: 30px;
 	text-decoration: none;
-	padding-left: 40px;
+	padding-left: 5px;
 	box-sizing: border-box;
 	transition: 0.5s;
+	font-size: 16px;
 	transition-property: background;
+	font-weight: bold;
 }
 
 .mobile__menu a:hover{
@@ -301,7 +444,10 @@ header {
 }
 
 .mobile__menu i{
-	padding-right: 10px;
+	width: 18px;
+	height: 20px;
+	padding-right: 30px;
+	color: #A020F0;
 }
 
 @media screen and (min-width: 780px) {
@@ -311,14 +457,18 @@ header {
 }
 
 @media screen and (max-width: 780px){
+	header .left__area .avatar__lunnary {
+		display: none;
+	}
+
 	.sidebar{
 		display: none;
 	}
 
 	.content{
 		margin-left: 0;
-		margin-top: 0;
-		padding: 10px 20px;
+		margin-top: 60px;
+		padding: 20px;
 		transition: 0s;
 	}
 
@@ -347,7 +497,7 @@ header {
 		border-radius: 50%;
 	}
 
-	.left_area .nav_btn {
+	header .left__area .nav_btn {
 		color: #fff;
 		font-size: 22px;
 		cursor: pointer;
@@ -356,7 +506,7 @@ header {
 		display: block;
 	}
 
-	.nav_bar .nav_btn:hover{
+	header .left__area .nav_btn:hover{
 		color: #19B3D3;
 	}
 
