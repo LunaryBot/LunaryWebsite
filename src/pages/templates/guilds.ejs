@@ -1,6 +1,6 @@
 <div class="scroll">
     <div class="guilds">
-        <div class="guild" id="<%= user.id %>">
+        <div class="guild" href="/dashboard/@me" id="<%= user.id %>">
             <img id="guild__<%= user.id %>" class="menu_guild_user_avatar" src="<%= user.avatar.replace(".gif", ".png") %>" />
         </div>
         <% user.guilds.filter(function(x) {
@@ -8,7 +8,7 @@
             
             return a.has(8) || a.has(32)
         }).forEach(guild => { %>
-            <div class="guild" id="<%= guild.id %>">
+            <div class="guild" href="/dashboard/guild/<%= guild.id %>" id="<%= guild.id %>">
                 <% if(guild.icon) { %> 
                     <img id="guild__<%= guild.id %>" src="<%= `https://cdn.discordapp.com/${guild.icon ? `icons/${guild.id}/${guild.icon}.png` : 'embed/avatars/1.png'}` %>" /> <% 
                 } else {

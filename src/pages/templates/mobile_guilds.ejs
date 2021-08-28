@@ -1,6 +1,6 @@
 <div class="scroll">
     <div class="guilds">
-        <div class="mobile__guild" id="<%= user.id %>">
+        <div class="mobile__guild" href="/dashboard/@me" id="<%= user.id %>">
             <img id="mobile__guild__<%= user.id %>" class="menu_guild_user_avatar" src="<%= user.avatar %>" />
         </div>
         <% user.guilds.filter(function(x) {
