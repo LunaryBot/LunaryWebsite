@@ -23,11 +23,11 @@ $(".select").hover(function() {
             menu.find(".select__trigger p").text(o.attr("name") || o.text())
         })
     })
-    menu.find(".select-menu-search input").keyup(function() {
-        const value = $(this).val()
+    menu.find(".select-menu-search input").keyup(function(that, event) {
+        const value = ($(that).val() || "").toLowerCase()
         menu.find("span").each(function(i, x) {
             const option = $(this)
-            if(option.text().indexOf(value) > -1 || option.attr('data-value') == value) {
+            if(option.text().toLowerCase().indexOf(value) > -1 || option.attr('data-value').toLowerCase() == value) {
                 $(this).show();
             } else {
                 $(this).hide();

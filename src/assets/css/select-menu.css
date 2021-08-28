@@ -118,13 +118,14 @@
     display: block;
     font-weight: 600;
     font-size: 14px;
-    color: #fff;
     cursor: pointer;
     height: 24px;
     white-space: nowrap;
     overflow: hidden;
     padding-left: 3%;
     transition: 0.3s;
+    color: #fff;
+    /* text-shadow: black 1px -1px, black -1px 1px, black 1px 1px, black -1px -1px; */
 }
 
 .custom-option:hover {

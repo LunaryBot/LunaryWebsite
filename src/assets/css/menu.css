@@ -251,6 +251,7 @@ header .center__area .avatar__lunnary:hover {
 
 .content{
 	margin-top: 60px;
+	margin-bottom: 100px;
 	padding: 20px;
 	margin-left: 350px;
 	background-position: center;
@@ -275,12 +276,48 @@ header .center__area .avatar__lunnary:hover {
 	display: none;
 }
 
-.content .card p{
+.content .card .card-title{
+	margin-left: 10px;
+	font-family: 'Montserrat', sans-serif;
+	color: rgb(168, 168, 168);
+}
+
+.content .card .card-content{
 	background: #181818;
 	padding: 15px;
 	margin-bottom: 10px;
 	font-size: 14px;
 	opacity: 0.8;
+	border-radius: 5px;
+	border: 2px solid #A020F0;
+}
+
+.content .card .card-content label {
+	margin-left: 3%;
+}
+
+.content .card .card-content .select-wrapper {
+	margin-left: 3%;
+}
+
+.content .card hr {
+	border: 2px solid #212121;
+	width: 96%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.content .card code {
+	color: #A020F0;
+	background: #070707;
+	border-radius: 3px;
+}
+
+.content .page-title {
+	font-family: 'Montserrat', sans-serif;
+	width: auto;
+	color: rgb(168, 168, 168);
+	border-bottom: 1px solid rgb(168, 168, 168);
 }
 
 /* Mobile */
@@ -369,7 +406,7 @@ header .center__area .avatar__lunnary:hover {
     border-radius: 100%;
     width: 60px;
     height: 60px;
-    background-color: rgb(114, 137, 218);
+    background-color: rgb(168, 168, 168);
 	filter: grayscale(80%);
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -440,7 +477,7 @@ header .center__area .avatar__lunnary:hover {
 }
 
 .mobile__menu a:hover{
-	background: #19B3D3;
+	background: rgb(168, 168, 168);
 }
 
 .mobile__menu i{
@@ -507,7 +544,7 @@ header .center__area .avatar__lunnary:hover {
 	}
 
 	header .left__area .nav_btn:hover{
-		color: #19B3D3;
+		color: rgb(168, 168, 168);
 	}
 
 	.mobile_nav_items{
@@ -528,7 +565,7 @@ header .center__area .avatar__lunnary:hover {
 	}
 
 	.mobile_nav_items a:hover{
-		background: #19B3D3;
+		background: rgb(168, 168, 168);
 	}
 
 	.mobile_nav_items i{

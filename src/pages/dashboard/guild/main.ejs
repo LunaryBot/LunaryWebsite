@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/select-menu.css" />
     
     <script src="/js/jquery.js"></script>
+    <script src="/js/navigator_userAgent.js"></script>
 
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css" />
     <title>Document</title>
@@ -19,7 +20,12 @@
 
     <div class="content">
 
-        
+        <div class="card">
+            <div class="card-title">
+                <h3><strong><i class="fas fa-home"></i> BEM VINDO(A)</strong></h3>
+            </div>
+            <div class="card-content">Olá <strong><%= user.username %></strong>! Bem-vindo(a) ao painel se configuração do servidor <strong><%= guild.name %></strong>, aqui você poderá configurar alguns módulos de comandos ou eventos, por exemplo as permissões customizáveis para seus moderadores. Agora boa sorte e explore as opções configuráveis!</div>
+        </div>
 
     </div>
 

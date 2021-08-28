@@ -27,6 +27,19 @@ router.get("/:id_guild/home", checkAuth, async(req, res) => {
     })
 })
 
+router.get("/:id_guild/moderation", checkAuth, async(req, res) => {
+    if(checkGuild(req, res) != true) return
+
+    const guild = await getCacheGuild(req.user.id, req.params.id_guild)
+    if(!guild) return res.redirect("/dashboard/@me")
+    
+    res.render("dashboard/guild/moderation", {
+        guild: guild.data,
+        user: req.user,
+        permissions: Permissions
+    })
+})
+
 async function getCacheGuild(userID, guildID) {
     let guild = cache.get(`${userID}_${guildID}`)
     if(guild) return guild

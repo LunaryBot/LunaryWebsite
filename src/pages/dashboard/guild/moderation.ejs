@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/css/menu.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/select-menu.css" />
+    <link rel="stylesheet" href="/css/toggle.css" />
+    
+    <script src="/js/jquery.js"></script>
+    <script src="/js/navigator_userAgent.js"></script>
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css" />
+    <title>Document</title>
+</head>
+<body>
+    <%- include("../../templates/menu_guild") %> 
+
+    <div class="content">
+
+        <div class="page-title">
+            <h2><strong><i class="fas fa-hammer"></i> MODERAÇÃO</strong></h2>
+        </div>
+
+        <br>
+        <br>
+        <div class="card">
+            <div class="card-title">
+                <h3><strong><i class="fas fa-cog"></i> GERAL</strong></h3>
+            </div>
+            <div class="card-content">
+                <div class="check-radio">
+                    <input type="checkbox" name="mandatory_reason" id="mandatory_reason" data-send-on-save /><label style="margin-left: 1%; font-size: 18px"><strong>Tornar motivo para punições obrigatório</strong></label>
+                    <p>Permitir que uma punição usando o bot(Lunar) só seja efetuada com um motivo especificado.<br>Essa opção só ira ser aplicada para usuários que não possuem um cargo com a permissão <code>Punir sem motivo</code>.</p>
+                </div>
+                <hr>
+                <br>
+                <div class="check-radio">
+                    <input type="checkbox" name="log_unban" id="log_unban" data-send-on-save /><label style="margin-left: 1%; font-size: 18px"><strong>Registrar evento Unban</strong></label>
+                    <p>Registrar no canal de modlogs quando um banimento for retirado.<br>Para mostrar o motivo e o autor, você precisa dar ao bot permissão de <code>Ver registro de autoria</code>.</p>
+                </div>
+                <hr>
+                <br>
+                <div class="check-radio">
+                    <input type="checkbox" name="log_events" id="log_events" data-send-on-save /><label style="margin-left: 1%; font-size: 18px"><strong>Eventos de banimento de log não feitos através do bot(Lunar)</strong></label>
+                    <p>Registrar no canal de modlogs e punições quando um banimento for aplicado e não tenha sido feito pelo bot(Lunar).<br>Para mostrar o motivo e o autor, você precisa dar ao bot permissão de <code>Ver registro de autoria</code>.</p>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="card">
+            <div class="card-title">
+                <h3><strong><i class="fas fa-volume-slash"></i> MUTE</strong></h3>
+            </div>
+
+            <div class="card-content">
+                <label><strong>Cargo de mute:</strong></label>
+                <p style="margin-left: 3%; color: rgb(184, 184, 184)">Cargo que um usuário irá receber enquanto estiver mutado.<br>Se não estiver nenhum cargo selecionado o bot(Lunar) irá criar um.</p>
+                <div class="select-wrapper">
+                    <div class="select" id="modlogs">
+                        <div class="select__trigger"><p>Selecionar Cargo</p>
+                        </div>
+                        <p class="select-menu-search"><input type="text" value="" autocomplete="off" placeholder="Nome/ID" name="search"><i class="icon fas fa-search"></i></p>
+                        <div class="custom-options close" id="co-modlogs">
+                            <span class="custom-option selected" data-value="none" name="Selecionar Cargo">Nenhum</span>
+                            <% guild.roles.filter(x => !x.managed && x.id != guild.id).sort((a, b) => b.rawPosition - a.rawPosition).map(function(role) { %> 
+                                <span class="custom-option" style="color: #<%= (role.color || 16777215).toString(16) %>;" data-value="<%= role.id %>"> <p><%= role.name %></p> </span>    
+                            <% }) %>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <br>
+                <div class="check-radio">
+                    <input type="checkbox" name="log_events" id="log_events" data-send-on-save /><label style="margin-left: 1%; font-size: 18px"><strong>Remover cargos</strong></label>
+                    <p>Remover os cargos do usuário durante o período de silenciamento e devolve-os quando o silenciamento terminar.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <%- include("../../templates/usertoJSON") %> 
+    <%- include("../../templates/guildtoJSON") %> 
+
+    <script type="text/javascript" src="/js/menu.js"></script>
+    <script type="text/javascript" src="/js/select-menu.js"></script>
+    <script type="text/javascript" src="/js/Bitfield.js"></script>
+    <script type="text/javascript" src="/js/GuildConfigs.js"></script>
+</body>
+</html>
