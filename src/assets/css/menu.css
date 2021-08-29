@@ -230,7 +230,8 @@ header .center__area .avatar__lunnary:hover {
 .sidebar .itens i{
 	width: 18px;
 	height: 20px;
-	padding-right: 45px;
+	font-size: 20px;
+	padding-right: 27px;
 	padding-left: 10px;
 	color: #A020F0;
 }
@@ -483,7 +484,7 @@ header .center__area .avatar__lunnary:hover {
 .mobile__menu i{
 	width: 18px;
 	height: 20px;
-	padding-right: 30px;
+	padding-right: 20px;
 	color: #A020F0;
 }
 
