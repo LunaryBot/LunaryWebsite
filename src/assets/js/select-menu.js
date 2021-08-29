@@ -23,8 +23,8 @@ $(".select").hover(function() {
             menu.find(".select__trigger p").text(o.attr("name") || o.text())
         })
     })
-    menu.find(".select-menu-search input").keyup(function(that, event) {
-        const value = ($(that).val() || "").toLowerCase()
+    menu.find("input").keyup(function() {
+        const value = ($(this).val() || "").toLowerCase()
         menu.find("span").each(function(i, x) {
             const option = $(this)
             if(option.text().toLowerCase().indexOf(value) > -1 || option.attr('data-value').toLowerCase() == value) {
@@ -36,7 +36,7 @@ $(".select").hover(function() {
     })
 }, function() {
     const menu = $(this)
-    menu.find(".select-menu-search input").val("")
+    menu.find("input").val("")
     menu.removeClass("open")
     menu.find("span").each(function(i, x) {
         const option = $(this).show()

@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="/css/styles.css" />
     <link rel="stylesheet" href="/css/select-menu.css" />
     <link rel="stylesheet" href="/css/toggle.css" />
+
+    <link rel="stylesheet" href="/css/guild.css" />
     
     <script src="/js/jquery.js"></script>
     <script src="/js/navigator_userAgent.js"></script>
@@ -45,6 +47,12 @@
                 <hr>
                 <br>
                 <div class="check-radio">
+                    <input type="checkbox" name="log_unmute" id="log_unban" data-send-on-save /><label style="margin-left: 1%; font-size: 18px"><strong>Registrar evento Unmute</strong></label>
+                    <p>Registrar no canal de punições quando um silenciamento for retirado.</p>
+                </div>
+                <hr>
+                <br>
+                <div class="check-radio">
                     <input type="checkbox" name="log_events" id="log_events" data-send-on-save /><label style="margin-left: 1%; font-size: 18px"><strong>Eventos de banimento de log não feitos através do bot(Lunar)</strong></label>
                     <p>Registrar no canal de modlogs e punições quando um banimento for aplicado e não tenha sido feito pelo bot(Lunar).<br>Para mostrar o motivo e o autor, você precisa dar ao bot permissão de <code>Ver registro de autoria</code>.</p>
                 </div>
@@ -62,11 +70,11 @@
                 <label><strong>Cargo de mute:</strong></label>
                 <p style="margin-left: 3%; color: rgb(184, 184, 184)">Cargo que um usuário irá receber enquanto estiver mutado.<br>Se não estiver nenhum cargo selecionado o bot(Lunar) irá criar um.</p>
                 <div class="select-wrapper">
-                    <div class="select" id="modlogs">
+                    <div class="select" id="muterole">
                         <div class="select__trigger"><p>Selecionar Cargo</p>
                         </div>
                         <p class="select-menu-search"><input type="text" value="" autocomplete="off" placeholder="Nome/ID" name="search"><i class="icon fas fa-search"></i></p>
-                        <div class="custom-options close" id="co-modlogs">
+                        <div class="custom-options close" id="co-muterole">
                             <span class="custom-option selected" data-value="none" name="Selecionar Cargo">Nenhum</span>
                             <% guild.roles.filter(x => !x.managed && x.id != guild.id).sort((a, b) => b.rawPosition - a.rawPosition).map(function(role) { %> 
                                 <span class="custom-option" style="color: #<%= (role.color || 16777215).toString(16) %>;" data-value="<%= role.id %>"> <p><%= role.name %></p> </span>    
@@ -80,6 +88,49 @@
                     <input type="checkbox" name="log_events" id="log_events" data-send-on-save /><label style="margin-left: 1%; font-size: 18px"><strong>Remover cargos</strong></label>
                     <p>Remover os cargos do usuário durante o período de silenciamento e devolve-os quando o silenciamento terminar.</p>
                 </div>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="card">
+            <div class="card-title">
+                <h3><strong><i class="fas fa-hashtag"></i> Canais de Logs</strong></h3>
+            </div>
+
+            <div class="card-content">
+                <label><strong>Canal de modlogs:</strong></label>
+                <div class="select-wrapper">
+                    <div class="select" id="modlogs">
+                        <div class="select__trigger"><p>Selecionar Canal</p>
+                        </div>
+                        <p class="select-menu-search"><input type="text" value="" autocomplete="off" placeholder="Nome/ID" name="search"><i class="icon fas fa-search"></i></p>
+                        <div class="custom-options close" id="co-modlogs">
+                            <span class="custom-option selected" data-value="none" name="Selecionar Cargo">Nenhum</span>
+                            <% guild.channels.filter(x => ["GUILD_TEXT", "GUILD_NEWS"].includes(x.type)).sort((a, b) => a.rawPosition - b.rawPosition).map(function(channel) { %> 
+                                <span class="custom-option" data-value="<%= channel.id %>"> <p><%= channel.name %></p> </span>    
+                            <% }) %>
+                        </div>
+                    </div>
+                </div>
+                <p style="margin-left: 3%; color: rgb(184, 184, 184)">Canal onde será enviado as mensagem de modlogs. <a href="https://ptb.discord.com/channels/869916717122469898/872881703520194621/880267224332513380"><code>Exemplo</code></a><br><code style="color: #00ff00">Mostra autor, usuário, motivo, id e link para log punição</code>, <br><code style="color: red;">Não mostra o gif de punição</code></p>
+                <hr>
+                <br>
+                <label><strong>Canal de punições:</strong></label>
+                <div class="select-wrapper">
+                    <div class="select" id="punicoes">
+                        <div class="select__trigger"><p>Selecionar Canal</p>
+                        </div>
+                        <p class="select-menu-search"><input type="text" value="" autocomplete="off" placeholder="Nome/ID" name="search"><i class="icon fas fa-search"></i></p>
+                        <div class="custom-options close" id="co-punicoes">
+                            <span class="custom-option selected" data-value="none" name="Selecionar Cargo">Nenhum</span>
+                            <% guild.channels.filter(x => ["GUILD_TEXT", "GUILD_NEWS"].includes(x.type)).sort((a, b) => a.rawPosition - b.rawPosition).map(function(channel) { %> 
+                                <span class="custom-option" data-value="<%= channel.id %>"> <p><%= channel.name %></p> </span>    
+                            <% }) %>
+                        </div>
+                    </div>
+                </div>
+                <p style="margin-left: 3%; color: rgb(184, 184, 184)">Canal onde será enviado as mensagem de punições. <a href="https://ptb.discord.com/channels/869916717122469898/872881703520194621/880267224332513380"><code>Exemplo</code></a><br><code style="color: #00ff00">Mostra autor, usuário, motivo, e gif punição</code>, <br><code style="color: red;">Não mostra id e link de log da punição.</code></p>
             </div>
         </div>
     </div>
