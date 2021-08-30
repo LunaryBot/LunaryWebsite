@@ -45,7 +45,7 @@
                     </thead>
                     <tbody>
                         <% logs.sort((a, b) => b.date - a.date).map(x => { %> 
-                            <tr id="<%= x.id %>" card-log>
+                            <tr id="<%= x.id %>" class="<%= id && x.id == id ? "open" : "" %> " card-log>
                                 <td class="author">
                                     <img src="<%= x.user.avatar %>" class="img" alt="">
                                     <p class="details"><strong><%= x.user.tag %><br><br><%= x.user.id %></strong></p>
@@ -59,51 +59,7 @@
                                 <td><strong><%= `${f(d.getDate())}/${f(d.getMonth())}/${f(d.getFullYear())} ${f(d.getHours())}:${f(d.getMinutes())}` %></strong></td>
                             </tr>
                             <tr>
-                                <td class="card-footer close" colspan="6" id="footer-<%= x.id %>">
-                                    <h3>Motivo</h3>
-                                    <br>
-                                    <p><strong><%= decodeURIComponent(x.reason) %></strong></p>
-                                </td>
-                            </tr>
-                        <% }) %>
-                        <% logs.sort((a, b) => b.date - a.date).map(x => { %> 
-                            <tr id="2<%= x.id %>" card-log>
-                                <td class="author">
-                                    <img src="<%= x.user.avatar %>" class="img" alt="">
-                                    <p class="details"><strong><%= x.user.tag %><br><br><%= x.user.id %></strong></p>
-                                </td>
-                                <td><strong><%= x.author.tag %><br><br><%= x.author.id %></strong></td>
-                                <td><strong><%= ({"1": "Ban", "2": "Kick", "3": "Mute", "4": "Adv"})[x.type] %></strong></td>
-                                <% 
-                                    const d = new Date(x.date)
-                                    const f = (n) => n < 10 ? `0${n}` : n
-                                %>
-                                <td><strong><%= `${f(d.getDate())}/${f(d.getMonth())}/${f(d.getFullYear())} ${f(d.getHours())}:${f(d.getMinutes())}` %></strong></td>
-                            </tr>
-                            <tr>
-                                <td class="card-footer close" colspan="6" id="footer-2<%= x.id %>">
-                                    <h3>Motivo</h3>
-                                    <br>
-                                    <p><strong><%= decodeURIComponent(x.reason) %></strong></p>
-                                </td>
-                            </tr>
-                        <% }) %>
-                        <% logs.sort((a, b) => b.date - a.date).map(x => { %> 
-                            <tr id="3<%= x.id %>" card-log>
-                                <td class="author">
-                                    <img src="<%= x.user.avatar %>" class="img" alt="">
-                                    <p class="details"><strong><%= x.user.tag %><br><br><%= x.user.id %></strong></p>
-                                </td>
-                                <td><strong><%= x.author.tag %><br><br><%= x.author.id %></strong></td>
-                                <td><strong><%= ({"1": "Ban", "2": "Kick", "3": "Mute", "4": "Adv"})[x.type] %></strong></td>
-                                <% 
-                                    const d = new Date(x.date)
-                                    const f = (n) => n < 10 ? `0${n}` : n
-                                %>
-                                <td><strong><%= `${f(d.getDate())}/${f(d.getMonth())}/${f(d.getFullYear())} ${f(d.getHours())}:${f(d.getMinutes())}` %></strong></td>
-                            </tr>
-                            <tr>
-                                <td class="card-footer close" colspan="6" id="footer-3<%= x.id %>">
+                                <td class="card-footer <%= id && x.id == id ? "" : "close" %>" colspan="6" id="footer-<%= x.id %>">
                                     <h3>Motivo</h3>
                                     <br>
                                     <p><strong><%= decodeURIComponent(x.reason) %></strong></p>
@@ -112,6 +68,26 @@
                         <% }) %>
                     </tbody>
                 </table>
+            </div>
+
+            <div class="buttons-marge">
+                <% if(page > 1) { %> 
+                    <div style="cursor: pointer;" onclick="window.location.href = '?page=<%= page - 1 %>'" class="button">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                <% } else { %> 
+                    <div class="button" style="opacity: 0;"></div>
+                <% } %>  
+                <div class="button">
+                    <strong><%= page %></strong>
+                </div>
+                <% if(page < pages) { %> 
+                    <div style="cursor: pointer;" onclick="window.location.href = '?page=<%= page + 1 %>'" class="button">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                <% }  else { %> 
+                    <div class="button" style="opacity: 0;"></div>
+                <% } %> 
             </div>
         <% } %>
     </div>

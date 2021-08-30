@@ -46,17 +46,16 @@ router.get("/:id_guild/moderation", checkAuth, async(req, res) => {
 router.get("/:id_guild/modlogs", checkAuth, async(req, res) => {
     if(checkGuild(req, res) != true) return
 
-    // const guild = await getCacheGuild(req.user.id, req.params.id_guild)
-    // if(!guild) return res.redirect("/dashboard/@me")
-
     let logs = await global.LogsDB.ref().once("value")
     logs = Object.entries(logs.val() || {}).map(function([k, v], i) {
         const data = JSON.parse(Buffer.from(v, 'base64').toString('ascii'))
         data.id = k
         return data
-    }).filter(x => x.server == req.params.id_guild).sort((a, b) => b.date - a.date) || []//.map((x, i) => x.index = i)
+    }).filter(x => x.server == req.params.id_guild).sort((a, b) => b.date - a.date) || []
 
-    const logsChunk = chunk(logs, 2)
+    if(req.query.user && `${req.query.user}`.length == 18) logs = logs.filter(x => x.user == req.query.user)
+
+    const logsChunk = chunk(logs, 25)
     const page = Math.floor(req.query.id ? (logs.findIndex(x => x.id == req.query.id) / 2) + 1 : Math.abs(req.query.page || 1))
     logs = logsChunk[page - 1] || []
 
@@ -121,8 +120,11 @@ router.get("/:id_guild/modlogs", checkAuth, async(req, res) => {
         return res.redirect("/dashboard/@me")
     }
     
+    const guild = req.user.guilds.find(x => x.id == req.params.id_guild)
+    if(guild.icon) guild.icon = `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.${Boolean(guild.icon.startsWith("a_")) ? "gif" : "png"}`
+
     res.render("dashboard/guild/modlogs", {
-        guild: guild.data,
+        guild: guild,
         user: req.user,
         permissions: Permissions,
         logs: logs,
