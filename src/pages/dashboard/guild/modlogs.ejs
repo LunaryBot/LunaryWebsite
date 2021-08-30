@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/css/menu.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/select-menu.css" />
+    <link rel="stylesheet" href="/css/toggle.css" />
+
+    <link rel="stylesheet" href="/css/guild.css" />
+    
+    <script src="/js/jquery.js"></script>
+    <script src="/js/navigator_userAgent.js"></script>
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css" />
+    <title>Document</title>
+</head>
+<body>
+    <%- include("../../templates/menu_guild") %> 
+
+    <div class="content">
+        <div class="page-title">
+            <br>
+            <h2><strong><i class="fas fa-clipboard-list"></i> MODLOGS - Aba de ações moderativas</strong></h2>
+        </div>
+        <br>
+        
+        <% if(!logs.length) { %>
+            <div style="text-align: center; color: rgb(168, 168, 168);">
+                <h3>Sem logs de moderação nesta página</h3>
+            </div>
+        <% } else { %>
+            <div class="scr">
+                <table class="cards-log">
+                    <thead>
+                        <tr>
+                            <th>Usuário</th>
+                            <th>Autor</th>
+                            <th>Ação</th>
+                            <th>Data</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% logs.sort((a, b) => b.date - a.date).map(x => { %> 
+                            <tr id="<%= x.id %>" card-log>
+                                <td class="author">
+                                    <img src="<%= x.user.avatar %>" class="img" alt="">
+                                    <p class="details"><strong><%= x.user.tag %><br><br><%= x.user.id %></strong></p>
+                                </td>
+                                <td><strong><%= x.author.tag %><br><br><%= x.author.id %></strong></td>
+                                <td><strong><%= ({"1": "Ban", "2": "Kick", "3": "Mute", "4": "Adv"})[x.type] %></strong></td>
+                                <% 
+                                    const d = new Date(x.date)
+                                    const f = (n) => n < 10 ? `0${n}` : n
+                                %>
+                                <td><strong><%= `${f(d.getDate())}/${f(d.getMonth())}/${f(d.getFullYear())} ${f(d.getHours())}:${f(d.getMinutes())}` %></strong></td>
+                            </tr>
+                            <tr>
+                                <td class="card-footer close" colspan="6" id="footer-<%= x.id %>">
+                                    <h3>Motivo</h3>
+                                    <br>
+                                    <p><strong><%= decodeURIComponent(x.reason) %></strong></p>
+                                </td>
+                            </tr>
+                        <% }) %>
+                        <% logs.sort((a, b) => b.date - a.date).map(x => { %> 
+                            <tr id="2<%= x.id %>" card-log>
+                                <td class="author">
+                                    <img src="<%= x.user.avatar %>" class="img" alt="">
+                                    <p class="details"><strong><%= x.user.tag %><br><br><%= x.user.id %></strong></p>
+                                </td>
+                                <td><strong><%= x.author.tag %><br><br><%= x.author.id %></strong></td>
+                                <td><strong><%= ({"1": "Ban", "2": "Kick", "3": "Mute", "4": "Adv"})[x.type] %></strong></td>
+                                <% 
+                                    const d = new Date(x.date)
+                                    const f = (n) => n < 10 ? `0${n}` : n
+                                %>
+                                <td><strong><%= `${f(d.getDate())}/${f(d.getMonth())}/${f(d.getFullYear())} ${f(d.getHours())}:${f(d.getMinutes())}` %></strong></td>
+                            </tr>
+                            <tr>
+                                <td class="card-footer close" colspan="6" id="footer-2<%= x.id %>">
+                                    <h3>Motivo</h3>
+                                    <br>
+                                    <p><strong><%= decodeURIComponent(x.reason) %></strong></p>
+                                </td>
+                            </tr>
+                        <% }) %>
+                        <% logs.sort((a, b) => b.date - a.date).map(x => { %> 
+                            <tr id="3<%= x.id %>" card-log>
+                                <td class="author">
+                                    <img src="<%= x.user.avatar %>" class="img" alt="">
+                                    <p class="details"><strong><%= x.user.tag %><br><br><%= x.user.id %></strong></p>
+                                </td>
+                                <td><strong><%= x.author.tag %><br><br><%= x.author.id %></strong></td>
+                                <td><strong><%= ({"1": "Ban", "2": "Kick", "3": "Mute", "4": "Adv"})[x.type] %></strong></td>
+                                <% 
+                                    const d = new Date(x.date)
+                                    const f = (n) => n < 10 ? `0${n}` : n
+                                %>
+                                <td><strong><%= `${f(d.getDate())}/${f(d.getMonth())}/${f(d.getFullYear())} ${f(d.getHours())}:${f(d.getMinutes())}` %></strong></td>
+                            </tr>
+                            <tr>
+                                <td class="card-footer close" colspan="6" id="footer-3<%= x.id %>">
+                                    <h3>Motivo</h3>
+                                    <br>
+                                    <p><strong><%= decodeURIComponent(x.reason) %></strong></p>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        <% } %>
+    </div>
+
+    <%- include("../../templates/usertoJSON") %> 
+    <%- include("../../templates/guildtoJSON") %> 
+
+    <script type="text/javascript" src="/js/menu.js"></script>
+    <script type="text/javascript" src="/js/select-menu.js"></script>
+
+    <script>
+        $("[card-log]").click(function() {
+            const card = $(this)
+            const card_footer = $(`#footer-${card.attr("id")}`)
+            if(card_footer.hasClass("close")) {
+                $("[card-log]").each(function() {
+                    const card = $(this)
+                    const card_footer = $(`#footer-${card.attr("id")}`)
+
+                    if(card.hasClass("open")) {
+                        card.removeClass("open")
+                    }
+                    if(!card_footer.hasClass("close")) {
+                        card_footer.addClass("close")
+                    }
+                })
+                card.addClass("open")
+                card_footer.removeClass("close")
+            } else {
+                card.removeClass("open")
+                card_footer.addClass("close")
+            }
+        })
+    </script>
+</body>
+</html>

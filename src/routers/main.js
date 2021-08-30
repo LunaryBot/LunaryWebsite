@@ -5,6 +5,19 @@ const path = require("path")
 const passport = require("passport")
 const app = express()
 const session = require("express-session")
+const firebase = require("firebase")
+
+// Firebase Database
+
+firebase.initializeApp(JSON.parse(Buffer.from(process.env.FIREBASE_CONFIG_GUILDS, 'base64').toString('ascii')))
+global.GuildsDB = firebase.database()
+global.db = global.GuildsDB
+
+const UsersDB = firebase.initializeApp(JSON.parse(Buffer.from(process.env.FIREBASE_CONFIG_USERS, 'base64').toString('ascii')), "users")
+global.UsersDB = UsersDB.database()
+        
+const LogsDB = firebase.initializeApp(JSON.parse(Buffer.from(process.env.FIREBASE_CONFIG_LOGS, 'base64').toString('ascii')), "logs")
+global.LogsDB = LogsDB.database()
 
 // App set's & use's
 app.use(session({
