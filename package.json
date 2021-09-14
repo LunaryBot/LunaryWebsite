@@ -25,7 +25,8 @@
     "express-session": "^1.17.2",
     "firebase": "^8.8.1",
     "passport": "^0.4.1",
-    "passport-discord": "^0.1.4"
+    "passport-discord": "^0.1.4",
+    "raw-body": "^2.4.1"
   },
   "devDependencies": {
     "prettier": "2.3.2"

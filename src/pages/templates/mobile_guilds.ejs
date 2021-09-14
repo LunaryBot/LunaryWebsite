@@ -7,7 +7,7 @@
             const a = new permissions(x.permissions)
             return a.has(8) || a.has(32)
         }).forEach(guild => { %>
-            <div class="mobile__guild" id="<%= guild.id %>">
+            <div class="mobile__guild" href="/dashboard/guild/<%= guild.id %>" id="<%= guild.id %>" id="<%= guild.id %>">
                 <% if(guild.icon) { %> 
                     <img id="mobile__guild__<%= guild.id %>" src="<%= `https://cdn.discordapp.com/${guild.icon ? `icons/${guild.id}/${guild.icon}.png` : 'embed/avatars/1.png'}` %>" /> <% 
                 } else {

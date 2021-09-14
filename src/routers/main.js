@@ -37,6 +37,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routers
+app.use("/api", require("./api/main"))
 app.use("/auth", require("./auth"))
 app.use("/dashboard", require("./dashboard/main"))
 

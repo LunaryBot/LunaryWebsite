@@ -74,7 +74,16 @@ router.get("/:id_guild/modlogs", checkAuth, async(req, res) => {
                     } 
                 }).then(a => a.data)
 
-                users.set(x.author, author)
+                const avatar = author.avatar ? `https://cdn.discordapp.com/avatars/${author.id}/${author.avatar}.${Boolean(author.avatar.startsWith("a_")) ? "gif" : "png"}` : "https://cdn.discordapp.com/embed/avatars/1.png"
+                const authorData = {
+                    id: author.id,
+                    username: author.username,
+                    discriminator: author.discriminator,
+                    tag: `${author.username}#${author.discriminator}`,
+                    avatar: avatar
+                }
+
+                users.set(x.author, authorData)
                 x.author = author
             } else if(x.author && users.get(x.author)) x.author = users.get(x.author)
             else x.author = {
@@ -121,7 +130,6 @@ router.get("/:id_guild/modlogs", checkAuth, async(req, res) => {
     }
     
     const guild = req.user.guilds.find(x => x.id == req.params.id_guild)
-    if(guild.icon) guild.icon = `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.${Boolean(guild.icon.startsWith("a_")) ? "gif" : "png"}`
 
     res.render("dashboard/guild/modlogs", {
         guild: guild,

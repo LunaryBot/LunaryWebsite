@@ -20,13 +20,13 @@ $(document).ready(function() {
     })
     
     $('.guild').hover(function() {
-        const img = $(`.guild #guild__${this.id}`);
+        const img = $(`.guild #guild__${$(this).attr("id")}`);
         const src = img.attr('src');
         if(regexAnimateIcon.test(src) || regexAnimateAvatar.test(src)) {
             return img.attr('src', src.replace(/png$/g, 'gif'));
         }
     }, function() {
-        const img = $(`.guild #guild__${this.id}`);
+        const img = $(`.guild #guild__${$(this).attr("id")}`);
         const src = img.attr('src');
         if(regexAnimateIcon2.test(src) || regexAnimateAvatar2.test(src)) {
              return img.attr('src', src.replace(/gif$/g, 'png'));
@@ -39,13 +39,13 @@ $(document).ready(function() {
     });
 
     $('.mobile__guild').hover(function() {
-        const img = $(`.mobile__guild #mobile__guild__${this.id}`);
+        const img = $(`.mobile__guild #mobile__guild__${$(this).attr("id")}`);
         const src = img.attr('src');
         if(regexAnimateIcon.test(src) || regexAnimateAvatar.test(src)) {
             return img.attr('src', src.replace(/png$/g, 'gif'));
         }
     }, function() {
-        const img = $(`.mobile__guild #mobile__guild__${this.id}`);
+        const img = $(`.mobile__guild #mobile__guild__${$(this).attr("id")}`);
         const src = img.attr('src');
         if(regexAnimateIcon2.test(src) || regexAnimateAvatar2.test(src)) {
             return img.attr('src', src.replace(/gif$/g, 'png'));

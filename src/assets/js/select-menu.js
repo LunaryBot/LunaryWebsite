@@ -1,13 +1,3 @@
-for (const option of document.querySelectorAll(".custom-option")) {
-    option.addEventListener('click', function() {
-        if (!this.classList.contains('selected')) {
-            this.parentNode.querySelector('.custom-option.selected').classList.remove('selected');
-            this.classList.add('selected');
-            this.closest('.select').querySelector('.select__trigger p').textContent = this.textContent;
-        }
-    })
-}
-
 $(".select").hover(function() {
     const menuID = this.id
     const menu = $(this)
@@ -18,9 +8,17 @@ $(".select").hover(function() {
 
         option.click(function() {
             const o = $(this)
-            
-            o.addClass("selected")
-            menu.find(".select__trigger p").text(o.attr("name") || o.text())
+            menu.find(".custom-options span.selected").map(function() {
+                const op = $(this)
+                op.removeClass("selected")
+            })
+            if(!o.hasClass("selected")) {
+                o.addClass("selected")
+                menu.find("div.select__trigger p").text(o.attr("name") || o.text())
+
+                const cardsave = $("#card-save")
+                if(cardsave) cardsave.addClass("ok")
+            }
         })
     })
     menu.find("input").keyup(function() {
