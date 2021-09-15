@@ -128,6 +128,7 @@
     /* text-shadow: black 1px -1px, black -1px 1px, black 1px 1px, black -1px -1px; */
 }
 
+.custom-option.selected:hover,
 .custom-option:hover {
     cursor: pointer;
     background-color: rgba(178, 178, 178, 0.541);
@@ -135,7 +136,7 @@
 
 .custom-option.selected {
     color: #ffffff;
-    background-color: rgba(178, 178, 178, 0.541);
+    background-color: #a955dda6;
 }
 
 @keyframes drop {

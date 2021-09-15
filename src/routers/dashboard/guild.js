@@ -35,11 +35,13 @@ router.get("/:id_guild/moderation", checkAuth, async(req, res) => {
 
     const guild = await getCacheGuild(req.user.id, req.params.id_guild)
     if(!guild) return res.redirect("/dashboard/@me")
+    const GuildDB = await getGuildDB(guild.data.id)
     
     res.render("dashboard/guild/moderation", {
         guild: guild.data,
         user: req.user,
-        permissions: Permissions
+        permissions: Permissions,
+        db: GuildDB
     })
 })
 
@@ -141,6 +143,11 @@ router.get("/:id_guild/modlogs", checkAuth, async(req, res) => {
         id: req.query.id
     })
 })
+
+async function getGuildDB(guildID) {
+    const data = await global.GuildsDB.ref(`Servers/${guildID}`).once("value").then(x => x.val() || {})
+    return data
+}
 
 async function getCacheGuild(userID, guildID) {
     let guild = cache.get(`${userID}_${guildID}`)

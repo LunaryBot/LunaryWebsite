@@ -277,6 +277,9 @@ header .center__area .avatar__lunnary:hover {
 	display: none;
 }
 
+.content .card {
+	margin-top: 30px;
+}
 .content .card .card-title{
 	margin-left: 10px;
 	font-family: 'Montserrat', sans-serif;
