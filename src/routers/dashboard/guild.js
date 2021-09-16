@@ -3,9 +3,8 @@ const { default: axios } = require("axios")
 const { Permissions } = require("discord.js")
 const checkAuth = require("../../utils/checkAuth")
 const chunk = require("../../utils/chunck")
+const getUser = require("../../utils/getUser")
 const cache = new Map()
-const tokens = [process.env.DISCORD_TOKEN1, process.env.DISCORD_TOKEN2, process.env.DISCORD_TOKEN3]
-const users = new Map()
 
 router.get("/:id_guild", checkAuth, async(req, res) => {
     if(checkGuild(req, res) != true) return
@@ -66,57 +65,23 @@ router.get("/:id_guild/modlogs", checkAuth, async(req, res) => {
     delete a.refreshToken
     delete a.guilds
 
-    users.set(req.user.id, a)
+    global.users.set(req.user.id, a)
     try {
         logs = await logs.map(async function(x) {
-            if(x.author && !users.get(x.author)) {
-                const author = await axios.get(`https://discord.com/api/v9/users/${x.author}`, { 
-                    headers: { 
-                        Authorization: `Bot ${tokens[Math.floor(Math.random() * tokens.length)]}` 
-                    } 
-                }).then(a => a.data)
-
-                const avatar = author.avatar ? `https://cdn.discordapp.com/avatars/${author.id}/${author.avatar}.${Boolean(author.avatar.startsWith("a_")) ? "gif" : "png"}` : "https://cdn.discordapp.com/embed/avatars/1.png"
-                const authorData = {
-                    id: author.id,
-                    username: author.username,
-                    discriminator: author.discriminator,
-                    tag: `${author.username}#${author.discriminator}`,
-                    avatar: avatar
-                }
-
-                users.set(x.author, authorData)
-                x.author = author
-            } else if(x.author && users.get(x.author)) x.author = users.get(x.author)
+            if(x.author && !global.users.get(x.author)) x.author = await getUser(x.author)
+            else if(x.author && global.users.get(x.author)) x.author = global.users.get(x.author)
             else x.author = {
-                id: "000000000000000000",
+                id: "0".repeat(18),
                 username: "unknown",
                 tag: "unknown#0000",
                 discriminator: "0000",
                 avatar: "https://cdn.discordapp.com/embed/avatars/1.png"
             }
 
-            if(x.user && !users.get(x.user)) {
-                const user = await axios.get(`https://discord.com/api/v9/users/${x.user}`, { 
-                    headers: { 
-                        Authorization: `Bot ${tokens[Math.floor(Math.random() * tokens.length)]}` 
-                    } 
-                }).then(a => a.data)
-
-                const avatar = user.avatar ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.${Boolean(user.avatar.startsWith("a_")) ? "gif" : "png"}` : "https://cdn.discordapp.com/embed/avatars/1.png"
-                const userData = {
-                    id: user.id,
-                    username: user.username,
-                    discriminator: user.discriminator,
-                    tag: `${user.username}#${user.discriminator}`,
-                    avatar: avatar
-                }
-
-                users.set(x.user, userData)
-                x.user = userData
-            } else if(x.user && users.get(x.user)) x.user = users.get(x.user)
+            if(x.user && !global.users.get(x.user)) x.user = await getUser(x.user)
+            else if(x.user && global.users.get(x.user)) x.user = global.users.get(x.user)
             else x.user = {
-                id: "000000000000000000",
+                id: "0".repeat(18),
                 username: "unknown",
                 tag: "unknown#0000",
                 discriminator: "0000",
@@ -131,7 +96,8 @@ router.get("/:id_guild/modlogs", checkAuth, async(req, res) => {
         return res.redirect("/dashboard/@me")
     }
     
-    const guild = req.user.guilds.find(x => x.id == req.params.id_guild)
+    const guild = { ...req.user.guilds.find(x => x.id == req.params.id_guild) }
+    guild.icon = `https://cdn.discordapp.com/${guild.icon ? `icons/${guild.id}/${guild.icon}.png` : 'embed/avatars/1.png'}`
 
     res.render("dashboard/guild/modlogs", {
         guild: guild,

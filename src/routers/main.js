@@ -1,11 +1,19 @@
 require("dotenv").config()
-require("../strategy")
 const express = require("express")
 const path = require("path")
 const passport = require("passport")
 const app = express()
 const session = require("express-session")
 const firebase = require("firebase")
+
+// Globais 
+
+global.users = new Map()
+global.states = new Map()
+
+// Strategy
+
+require("../strategy")
 
 // Firebase Database
 
