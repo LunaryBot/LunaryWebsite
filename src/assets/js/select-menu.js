@@ -15,9 +15,6 @@ $(".select").hover(function() {
             if(!o.hasClass("selected")) {
                 o.addClass("selected")
                 menu.find("div.select__trigger p").text(o.attr("name") || o.text())
-
-                const cardsave = $("#card-save")
-                if(cardsave) cardsave.addClass("ok")
             }
         })
     })

@@ -342,7 +342,7 @@ header .center__area .avatar__lunnary:hover {
 	animation: drop-save 0.3s ease-in-out 1; 
 }
 
-.content .card-save .bnt-save {
+/* .content .card-save .bnt-save {
 	height: 20px;
 	width: 50px;
 	background-color: #40e06ee6;
@@ -357,6 +357,56 @@ header .center__area .avatar__lunnary:hover {
 .content .card-save .bnt-save:hover {
 	background-color: #226835e6;
 	transition: 0.5s;
+} */
+
+.content #save {
+	background-color: #9370DB;
+	cursor:pointer;
+}
+
+#overlay-save {
+	display: none; 
+	position: fixed;
+    background-color: #0006;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+	left: 0;
+	top: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: .75s;
+	pointer-events: unset;
+}
+
+#overlay-save img {
+	margin-top: 20%;
+	width: 120px;
+	height: 120px;
+}
+
+#overlay-save p {
+	font-size: 1.5em;
+    color: #fff;
+}
+
+.overlay-save .loader {
+	display: block;
+	border: 7px solid #797979; /* Light grey */
+	border-top: 7px solid #f0f0f0; /* Blue */
+	border-radius: 50%;
+	width: 120px;
+	height: 120px;
+	margin: auto auto;
+	margin-top: 20%;
+	animation: spin 2s linear infinite;
+}
+  
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
 }
 
 /* Mobile */
@@ -526,13 +576,13 @@ header .center__area .avatar__lunnary:hover {
 	color: #A020F0;
 }
 
-@media screen and (min-width: 780px) {
+@media screen and (min-width: 980px) {
 	.mobile__menu {
 		display: none;
 	}
 }
 
-@media screen and (max-width: 780px){
+@media screen and (max-width: 980px){
 	header .left__area .avatar__lunnary {
 		display: none;
 	}

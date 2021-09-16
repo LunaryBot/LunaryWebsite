@@ -20,8 +20,11 @@
     <title>Document</title>
 </head>
 <body>
-    <%- include("../../templates/menu_guild") %> 
-
+    <div id="overlay-save">
+        <img src="https://cdn.discordapp.com/emojis/888110062516723812.png?v=1" alt="Salvando..." />
+        <p>Salvando...</p>
+    </div>
+    <%- include("../../templates/menu_guild") %>
     <div class="content" id="content">
         <div class="page-title">
             <br>
@@ -32,7 +35,7 @@
     </div>
 
     <%- include("../../templates/usertoJSON") %> 
-    <%- include("../../templates/guildtoJSON") %> 
+    <%- include("../../templates/guildtoJSON") %>
     <span id="guild-db-data" hidden>
         <% const data = { ...db } %> 
         <%= JSON.stringify(data) %>
@@ -44,7 +47,13 @@
     <script type="text/javascript" src="/js/select-menu.js" defer></script>
     
     <script defer>
-        function save() {
+        async function save() {
+            // const cardsave = $("#card-save")
+            // if(cardsave) cardsave.removeClass("ok")
+            $("#overlay-save").css({
+                display: "block"
+            })
+
             const data_saves = $("[data-send-on-save]")
 
             const save = data_saves.map(function(x) {
@@ -99,7 +108,15 @@
 
             console.log(json)
             console.log("...")
-            axios.post(`${window.location.origin}/api/guild/<%= guild.id %>/save`, json)
+            const res = await axios.post(`${window.location.origin}/api/guild/<%= guild.id %>/save`, json)
+            console.log(await res.data)
+            if(res.data.status == 200) {
+                setTimeout(() => {
+                    $("#overlay-save").css({
+                        display: "none"
+                    })
+                }, 1500)
+            }
         }
     </script>
 </body>

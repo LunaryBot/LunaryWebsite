@@ -31,6 +31,8 @@ app.use(session({
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, '../pages'));
 app.use(express.static(path.join(__dirname, '../assets')))
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // Passport
 app.use(passport.initialize());

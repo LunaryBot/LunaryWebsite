@@ -41,7 +41,7 @@ content.html(content.html() + `
         <div class="card-content">
             <label><strong>Cargo de mute:</strong></label><p style="margin-left: 3%; color: rgb(184, 184, 184)">Cargo que um usuário irá receber enquanto estiver mutado.<br>Se não estiver nenhum cargo selecionado o bot(Lunar) irá criar um.</p>
             <div class="select-wrapper" type="selectmenu" data-send-on-save>
-                    <div class="select" id="chat_modlogs">
+                    <div class="select" id="muterole">
                         <div class="select__trigger"><p>${(function() {
                             let a = "Selecionar Cargo"
                             if(guildDB.muterole) {
@@ -131,7 +131,11 @@ content.html(content.html() + `
         </div>
     </div>
 
-    <div class="card-save" id="card-save"><strong style="color: rgb(184, 184, 184)">Salvar as alterações feitas</strong> <button class="bnt-save" onclick="save()"><strong>Salvar</strong></button></div>
+    <div class="card"><div class="card-content" align="center" id="save" onclick="save()"><h1>Save</h1></div></div>  
+`)
+
+/*
+<div class="card-save" id="card-save"><strong style="color: rgb(184, 184, 184)">Salvar as alterações feitas</strong> <button class="bnt-save" onclick="save()"><strong>Salvar</strong></button></div>
 
     <script>
         $("[type]").map(function() {
@@ -144,4 +148,4 @@ content.html(content.html() + `
             }
         })
     </script>
-`)
+*/

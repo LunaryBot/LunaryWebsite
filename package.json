@@ -4,7 +4,8 @@
   "description": "",
   "main": "src/routers/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/routers/main.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.2",
     "firebase": "^8.8.1",
+    "nodemon": "^2.0.12",
     "passport": "^0.4.1",
     "passport-discord": "^0.1.4",
     "raw-body": "^2.4.1"
