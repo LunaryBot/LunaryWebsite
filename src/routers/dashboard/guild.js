@@ -10,7 +10,7 @@ router.get("/:id_guild", checkAuth, async(req, res) => {
     if(checkGuild(req, res) != true) return
 
     const guild = await getGuild(req.params.id_guild)
-    if(!guild || guild.status == 404) return res.redirect(`/dashboard/${req.params.id_guild}/invite`)
+    if(!guild || guild.status == 404) return res.redirect(`/invite?guild_id=${req.params.id_guild}`)
     cache.set(`${req.user.id}_${req.params.id_guild}`, guild)
 
     res.redirect(`/dashboard/guild/${req.params.id_guild}/home`)
@@ -20,7 +20,7 @@ router.get("/:id_guild/home", checkAuth, async(req, res) => {
     if(checkGuild(req, res) != true) return
 
     const guild = await getCacheGuild(req.user.id, req.params.id_guild)
-    if(!guild) return res.redirect("/dashboard/@me")
+    if(!guild || guild.status == 404) return res.redirect(`/invite?guild_id=${req.params.id_guild}`)
     
     res.render("dashboard/guild/main", {
         guild: guild.data,
@@ -33,7 +33,7 @@ router.get("/:id_guild/moderation", checkAuth, async(req, res) => {
     if(checkGuild(req, res) != true) return
 
     const guild = await getCacheGuild(req.user.id, req.params.id_guild)
-    if(!guild) return res.redirect("/dashboard/@me")
+    if(!guild || guild.status == 404) return res.redirect(`/invite?guild_id=${req.params.id_guild}`)
     const GuildDB = await getGuildDB(guild.data.id)
     
     res.render("dashboard/guild/moderation", {
@@ -44,8 +44,26 @@ router.get("/:id_guild/moderation", checkAuth, async(req, res) => {
     })
 })
 
+router.get("/:id_guild/staff", checkAuth, async(req, res) => {
+    if(checkGuild(req, res) != true) return
+
+    const guild = await getCacheGuild(req.user.id, req.params.id_guild)
+    if(!guild || guild.status == 404) return res.redirect(`/invite?guild_id=${req.params.id_guild}`)
+    const GuildDB = await getGuildDB(guild.data.id)
+    
+    res.render("dashboard/guild/staff", {
+        guild: guild.data,
+        user: req.user,
+        permissions: Permissions,
+        db: GuildDB
+    })
+})
+
 router.get("/:id_guild/modlogs", checkAuth, async(req, res) => {
     if(checkGuild(req, res) != true) return
+
+    const guild = await getCacheGuild(req.user.id, req.params.id_guild)
+    if(!guild || guild.status == 404) return res.redirect(`/invite?guild_id=${req.params.id_guild}`)
 
     let logs = await global.LogsDB.ref().once("value")
     logs = Object.entries(logs.val() || {}).map(function([k, v], i) {
@@ -95,9 +113,6 @@ router.get("/:id_guild/modlogs", checkAuth, async(req, res) => {
     } catch(_) {
         return res.redirect("/dashboard/@me")
     }
-    
-    const guild = { ...req.user.guilds.find(x => x.id == req.params.id_guild) }
-    guild.icon = `https://cdn.discordapp.com/${guild.icon ? `icons/${guild.id}/${guild.icon}.png` : 'embed/avatars/1.png'}`
 
     res.render("dashboard/guild/modlogs", {
         guild: guild,

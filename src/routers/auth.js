@@ -1,7 +1,6 @@
 const router = require("express").Router()
 const passport = require("passport")
 const generateOauth2 = require("../strategy/generateOauth2")
-const redirectCache = new Map()
 
 router.get("/", (req, res) => res.redirect(`/auth/login${req.query.state ? `?state=${req.query.state}` : ""}`))
 
@@ -26,7 +25,7 @@ router.get("/redirect", passport.authenticate("discord", {
             }
         }
 
-        res.redirect(`/dashboard/${req.query.guild ? `guild/${req.query.guild}` : `@me`}`)
+        res.redirect(`/dashboard/${req.query.guild_id ? `guild/${req.query.guild_id}` : `@me`}`)
     }
 )
 

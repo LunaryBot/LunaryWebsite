@@ -53,9 +53,7 @@ function generateOauth2(options = {}) {
     if(options.disableGuildSelect) query.set('disable_guild_select', true)
  
     if(options.guild) {
-        const guildId = this.guilds.resolveId(options.guild);
-        if(!guildId) throw new TypeError('INVALID_TYPE', 'options.guild', 'GuildResolvable');
-        query.set('guild_id', guildId);
+        query.set('guild_id', options.guild);
     }
 
     if(options.redirect_uri || options.redirect) query.set('redirect_uri', options.redirect_uri || options.redirect)

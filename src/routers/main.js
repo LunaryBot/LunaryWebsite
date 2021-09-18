@@ -5,6 +5,8 @@ const passport = require("passport")
 const app = express()
 const session = require("express-session")
 const firebase = require("firebase")
+const generateOauth2 = require("../strategy/generateOauth2")
+const { Permissions } = require("discord.js")
 
 // Globais 
 
@@ -12,7 +14,6 @@ global.users = new Map()
 global.states = new Map()
 
 // Strategy
-
 require("../strategy")
 
 // Firebase Database
@@ -57,8 +58,26 @@ app.get("/", (req, res) => {
     })
 })
 
-app.get("/login", (req, res) => {
-    res.redirect(`/auth/login`)
+app.get("/login", (req, res) => res.redirect(`/auth/login${req.query.state ? `?state=${req.query.state}` : ""}`))
+
+app.get("/invite", (req, res) => {
+    const data = {
+        scopes: ["guilds", "identify", "bot"],
+        redirect_uri: process.env.callback,
+        permissions: 8,
+        guild: req.query.guild_id
+    }
+
+    if(req.user && req.query.guild_id) {
+        const h = req.user.guilds.find(x => x.id == req.query.guild_id)
+        if(h) {
+            const a = new Permissions(h.permissions)
+            if(a.has(8) || a.has(32)) data.disableGuildSelect = true
+        }
+    }
+
+    const url = generateOauth2(data)
+    res.redirect(url)
 })
 
 app.listen(3000)
