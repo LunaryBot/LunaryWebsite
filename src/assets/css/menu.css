@@ -360,6 +360,7 @@ header .center__area .avatar__lunnary:hover {
 } */
 
 .content #save {
+	margin-top: 70px;
 	background-color: #9370DB;
 	cursor:pointer;
 }

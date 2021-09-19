@@ -90,7 +90,8 @@
                 configs: {}
             }
             
-            const bitfield = new GuildConfigs()
+            const guildDB = JSON.parse($("#guild-db-data").html())
+            const bitfield = new GuildConfigs(guildDB.configs || 0)
             const _ = [ ...save.prevObject ]
             _.map(x => {
                 if(x.bitfield == true) {

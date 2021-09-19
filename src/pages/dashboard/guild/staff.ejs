@@ -21,18 +21,25 @@
 <body>
     <%- include("../../templates/menu_guild") %> 
 
-    <div class="content">
+    <div class="content" id="content">
         <div class="page-title">
             <br>
-            <h2><strong><i class="fas fa-clipboard-user"></i> MODLOGS - Aba de ações moderativas</strong></h2>
+            <h2><strong><i class="fas fa-clipboard-user"></i> Staff</strong></h2>
         </div>
         <br>
     </div>
         
     <%- include("../../templates/usertoJSON") %> 
     <%- include("../../templates/guildtoJSON") %> 
+    <span id="guild-db-data" hidden>
+        <% const data = { ...db } %> 
+        <%= JSON.stringify(data) %>
+    </span>
 
     <script type="text/javascript" src="/js/menu.js"></script>
+    <script type="text/javascript" src="/js/Bitfield.js"></script>
+    <script type="text/javascript" src="/js/Permissions.js"></script>
+    <script type="text/javascript" src="/js/loads/guild/staff.js"></script>
     <script type="text/javascript" src="/js/select-menu.js"></script>
 </body>
 </html>
