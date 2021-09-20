@@ -5,6 +5,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
 
+code {
+	color: #A020F0;
+	background: #070707;
+	border-radius: 3px;
+}
+
+hr {
+	border: 2px solid #212121;
+	width: 96%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 body{
 	margin: 0;
 	padding: 0;
@@ -304,19 +317,6 @@ header .center__area .avatar__lunnary:hover {
 	margin-left: 3%;
 }
 
-.content .card hr {
-	border: 2px solid #212121;
-	width: 96%;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.content .card code {
-	color: #A020F0;
-	background: #070707;
-	border-radius: 3px;
-}
-
 .content .page-title {
 	font-family: 'Montserrat', sans-serif;
 	width: auto;
@@ -341,23 +341,6 @@ header .center__area .avatar__lunnary:hover {
 	display: block;
 	animation: drop-save 0.3s ease-in-out 1; 
 }
-
-/* .content .card-save .bnt-save {
-	height: 20px;
-	width: 50px;
-	background-color: #40e06ee6;
-	border: none;
-	border-radius: 3px;
-	color: white;
-	display: inline-block;
-	margin-left: 7px;
-	cursor: pointer;
-}
-
-.content .card-save .bnt-save:hover {
-	background-color: #226835e6;
-	transition: 0.5s;
-} */
 
 .content #save {
 	margin-top: 70px;

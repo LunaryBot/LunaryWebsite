@@ -22,11 +22,45 @@
     <%- include("../../templates/menu_guild") %> 
 
     <div class="content" id="content">
-        <div class="page-title">
+        <!-- <div class="page-title">
             <br>
             <h2><strong><i class="fas fa-clipboard-user"></i> Staff</strong></h2>
         </div>
-        <br>
+        <br> -->
+        <div id="roles-list">
+            <div class="role role-selected">Teste</div>
+            <% guild.roles.filter(x => x.id != guild.id).sort((a, b) => b.rawPosition - a.rawPosition).forEach(role => { %>
+                <div class="role" <% if(role.color) { %> style="color: #<%= (role.color || 16777215).toString(16) %>;" <% } %>  ><p><%= role.name %></p></div>
+            <% }) %>
+        </div>
+
+        <div id="permissions">
+            <br>
+            <div class="check-radio">
+                <input type="checkbox" name="lunar_ban_members" id="lunar_ban_members" /><label style="margin-left: 1%; font-size: 18px"><strong>Banir Membros</strong></label>
+                <p>Permite que um membro com o cargo aplique banimentos no servidor usando o bot(Lunar), <code>/ban</code>.</p>   
+            </div>
+            <br>
+            <hr>
+            <div class="check-radio">
+                <input type="checkbox" name="lunar_kick_members" id="lunar_kick_members" data-send-on-save bitfield /><label style="margin-left: 1%; font-size: 18px"><strong>Expulsar Membros</strong></label>
+                <p>Permite que um membro com o cargo expulsem membros do servidor usando o bot(Lunar), <code>/kick</code>.</p>  
+            </div>
+            <hr>
+            <br>
+            <div class="check-radio">
+                <input type="checkbox" name="lunar_mute_members" id="lunar_mute_members" data-send-on-save bitfield /><label style="margin-left: 1%; font-size: 18px"><strong>Silenciar Membros</strong></label>
+                <p>Permite que um membro com o cargo silenciem membros do servidor usando o bot(Lunar), <code>/mute</code>.</p>  
+            </div>
+            <hr>
+            <br>
+            <div class="check-radio">
+                <input type="checkbox" name="lunar_adv_members" id="lunar_adv_members" data-send-on-save bitfield /><label style="margin-left: 1%; font-size: 18px"><strong>Advertir Membros</strong></label>
+                <p>Permite que um membro com o cargo aplique uma advertência/aviso em um membro do servidor, <code>/adv</code>.</p>  
+            </div>
+
+        </div>
+        <div class="card" style="width: 76%; float: right; margin-top: 4px;"><div class="card-content" align="center" id="save" onclick="save()"><h1>Save</h1></div></div>  
     </div>
         
     <%- include("../../templates/usertoJSON") %> 
@@ -39,7 +73,7 @@
     <script type="text/javascript" src="/js/menu.js"></script>
     <script type="text/javascript" src="/js/Bitfield.js"></script>
     <script type="text/javascript" src="/js/Permissions.js"></script>
-    <script type="text/javascript" src="/js/loads/guild/staff.js"></script>
+    <!-- <script type="text/javascript" src="/js/loads/guild/staff.js"></script> -->
     <script type="text/javascript" src="/js/select-menu.js"></script>
 </body>
 </html>
