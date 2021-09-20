@@ -44,14 +44,14 @@ router.get("/:id_guild/moderation", checkAuth, async(req, res) => {
     })
 })
 
-router.get("/:id_guild/staff", checkAuth, async(req, res) => {
+router.get("/:id_guild/permissions", checkAuth, async(req, res) => {
     if(checkGuild(req, res) != true) return
 
     const guild = await getCacheGuild(req.user.id, req.params.id_guild)
     if(!guild || guild.status == 404) return res.redirect(`/invite?guild_id=${req.params.id_guild}`)
     const GuildDB = await getGuildDB(guild.data.id)
     
-    res.render("dashboard/guild/staff", {
+    res.render("dashboard/guild/permissions", {
         guild: guild.data,
         user: req.user,
         permissions: Permissions,

@@ -29,8 +29,9 @@
         <br> -->
         <div id="roles-list">
             <div class="role role-selected">Teste</div>
-            <% guild.roles.filter(x => x.id != guild.id).sort((a, b) => b.rawPosition - a.rawPosition).forEach(role => { %>
-                <div class="role" <% if(role.color) { %> style="color: #<%= (role.color || 16777215).toString(16) %>;" <% } %>  ><p><%= role.name %></p></div>
+            <% guild.roles.filter(x => x.id != guild.id).sort((a, b) => b.rawPosition - a.rawPosition).forEach(role => { 
+                const color = "#" + (role.color || 16777215).toString(16)%>
+                <div class="role" id="<%= role.id %> " data-color="<%= color %>" style="color: <%= color %>" ><p><%= role.name %></p></div>
             <% }) %>
         </div>
 
@@ -60,7 +61,7 @@
             </div>
 
         </div>
-        <div class="card" style="width: 76%; float: right; margin-top: 4px;"><div class="card-content" align="center" id="save" onclick="save()"><h1>Save</h1></div></div>  
+        <div class="card" style="width: 76%; float: right; margin-top: 4px;"><div class="card-content open" align="center" style="display: none;" id="save" onclick="save()"><h1>Save</h1></div></div>  
     </div>
         
     <%- include("../../templates/usertoJSON") %> 
@@ -73,7 +74,30 @@
     <script type="text/javascript" src="/js/menu.js"></script>
     <script type="text/javascript" src="/js/Bitfield.js"></script>
     <script type="text/javascript" src="/js/Permissions.js"></script>
-    <!-- <script type="text/javascript" src="/js/loads/guild/staff.js"></script> -->
-    <script type="text/javascript" src="/js/select-menu.js"></script>
+    <!-- <script type="text/javascript" src="/js/loads/guild/permissions.js"></script> -->
+
+    <script>
+        $(".role").click(function() {
+            const role = $(this)
+            $("#roles-list").find("div.role-selected").map(function() {
+                const op = $(this)
+                op.removeClass("role-selected")
+                op.css({
+                    "color": op.attr("data-color") || "rgb(168, 168, 168)"
+                })
+            })
+            role.css({
+                "color": "#fff"
+            })
+            role.addClass("role-selected")
+            const perms_card = $("#permissions")
+            perms_card.css({
+                "display": "block"
+            })
+            $("#save").css({
+                "display": "block"
+            })
+        })
+    </script>
 </body>
 </html>
