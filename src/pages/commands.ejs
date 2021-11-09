@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR" dir="ltr">
+  <header>
+  <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="/css/commands.css" />
+
+    <script src="/js/jquery.js"></script>
+    <script src="/js/navigator_userAgent.js"></script>
+
+  </header>
+  <body>
+    <div class="content-commands">
+        <div class="content-commands-container">
+          <div class="content-commands-column-1">
+                <p>
+                    Os comandos marcados com tags <kbd class="code-style-inline-blue">Azuis</kbd> requerem a respectiva permissão do Discord que ele destaca.<br>
+                    Os comandos marcados com tags <kbd class="code-style-inline-purple">Roxas</kbd> requerem a respectiva permissão do SPA(Sistema de Permissões Avançadas) que ele destaca.<br>
+                    Os comandos marcados com tags <kbd class="code-style-inline-red">Vermelhas</kbd> requerem que eu tenha respectiva permissão do Discord que ele destaca.<br>
+                    Os comandos marcados com a tag <kbd class="code-style-inline-green">Everyone</kbd> não requerem nenhuma permissão.
+                </p>
+          </div>
+          <div class="content-commands-column-2">
+            <div class="content-commands-column-2-left">
+              <h1>Grupos</h1>
+              <div class="content-commands-expand">
+                <p> Mostrar / Esconder todos </p>
+                <div class="switch">
+                  <input type="checkbox" class="checkbox-expand">
+                  <span class="slider"></span>
+                </div>
+              </div>
+              <ul class="qa-menu-list">
+                <li data-li="moderation" class="col-2-btn">Moderação</li>
+                <li data-li="administration" class="col-2-btn">Administração</li>
+                <li data-li="utilities" class="col-2-btn">Utilitarios</li>
+                <li data-li="bot" class="col-2-btn">Luny</li>
+                <li data-li="owner" class="col-2-btn">Owner</li>
+              </ul>
+            </div>
+            <div class="content-commands-column-2-right">
+              <div class="commands-search">
+                <input class="search-box" type="text" name="command" required="true" formnovalidate>
+                <label for="search" class="search-label">
+                  <span class="content-search"> Pesquisar </span>
+                </label>
+              </div>
+              <div class="commands" id="commands-list">
+                <div class="commands-still-loading"></div>
+                <div class="commands-loading-failed">
+                  <h1>Error: Unable to Load Commands</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script src="/js/commands.js"></script>
+  </body>
+</html>

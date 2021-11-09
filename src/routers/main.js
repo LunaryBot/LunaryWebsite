@@ -58,6 +58,10 @@ app.get("/", (req, res) => {
     })
 })
 
+app.get("/commands", (req, res) => {
+    res.render("commands")
+})
+
 app.get("/login", (req, res) => res.redirect(`/auth/login${req.query.state ? `?state=${req.query.state}` : ""}`))
 
 app.get("/invite", (req, res) => {
