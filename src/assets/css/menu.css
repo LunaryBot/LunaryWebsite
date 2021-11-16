@@ -240,13 +240,44 @@ header .center__area .avatar__lunnary:hover {
 	margin-left: 7px;
 }
 
-.sidebar .itens i{
+.sidebar .itens i {
 	width: 18px;
 	height: 20px;
 	font-size: 20px;
 	padding-right: 27px;
 	padding-left: 10px;
 	color: #A020F0;
+}
+
+.sidebar .card {
+	margin: 10px;
+	width: 90%;
+	background-color: #ffffff05;
+	border: 1px solid rgba(255, 255, 255, 0.4);
+	padding: 10px;
+	border-radius: 5px;
+	box-shadow: 0px 20px 40px 20px rgba(0, 0, 0, 0.438);
+}
+
+.sidebar .card h3, h5 {
+	text-align: left;
+}
+
+.sidebar .card .btn {
+	background-color: rgba(0, 0, 0, 0.438);
+	border: 2px solid #333;
+	font-family: "Montserrat";
+	color: white;
+	padding: 10px;
+	border-radius: 5px;
+	transition: 0.5s;
+}
+
+.sidebar .card .btn:hover {
+	cursor: pointer;
+	transform: scale(1.050, 1.050) translateX(4px);
+	box-shadow: 2px 6px 10px 5px rgba(0, 0, 0, 0.438);
+    transition: 0.5s;
 }
 
 #check:checked ~ .sidebar{
@@ -558,6 +589,37 @@ header .center__area .avatar__lunnary:hover {
 	height: 20px;
 	padding-right: 20px;
 	color: #A020F0;
+}
+
+.mobile__menu .card {
+	margin: 10px;
+	width: 90%;
+	background-color: #ffffff05;
+	border: 1px solid rgba(255, 255, 255, 0.4);
+	padding: 10px;
+	border-radius: 5px;
+	box-shadow: 0px 20px 40px 20px rgba(0, 0, 0, 0.438);
+}
+
+.mobile__menu .card h3, h5 {
+	text-align: left;
+}
+
+.mobile__menu .card .btn {
+	background-color: rgba(0, 0, 0, 0.438);
+	border: 2px solid #333;
+	font-family: "Montserrat";
+	color: white;
+	padding: 10px;
+	border-radius: 5px;
+	transition: 0.5s;
+}
+
+.mobile__menu .card .btn:hover {
+	cursor: pointer;
+	transform: scale(1.050, 1.050) translateX(4px);
+	box-shadow: 2px 6px 10px 5px rgba(0, 0, 0, 0.438);
+    transition: 0.5s;
 }
 
 @media screen and (min-width: 980px) {

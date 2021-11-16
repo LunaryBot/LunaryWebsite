@@ -1,7 +1,6 @@
 {
   "name": "lunary-website",
   "version": "3.0.0",
-  "description": "",
   "main": "src/routers/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -32,5 +31,6 @@
   },
   "devDependencies": {
     "prettier": "2.3.2"
-  }
+  },
+  "description": ""
 }
